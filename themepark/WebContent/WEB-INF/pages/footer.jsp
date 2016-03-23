@@ -1,10 +1,7 @@
-<div class="container">
-	<hr>
-	<div class="row">
-	    <div class="col-xs-12">
-	        <footer>
-	            <p>Footer area</p>
-	        </footer>
-	    </div>
-	</div>
+<div class="row">
+    <div class="col-xs-12">
+        <footer>
+            <p>Footer area</p>
+        </footer>
+    </div>
 </div>
