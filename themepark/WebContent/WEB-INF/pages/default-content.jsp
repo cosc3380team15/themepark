@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<h2>Welcome to Duff Gardens <small>Where roaming gangs aren't a big problem anymore!</small></h2>
+<h2>Welcome to Duff Gardens</h2>
+<h3></h3> <small>Where roaming gangs aren't a big problem anymore!</small></h3>
 <br />
 <br />
 <br />
