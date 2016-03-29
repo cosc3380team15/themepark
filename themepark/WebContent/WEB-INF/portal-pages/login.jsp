@@ -8,11 +8,11 @@
 <title>Employee Portal Login</title>
 </head>
 <body>
-	<form method="POST" action="LoginServlet">
+	<form method="POST" action="Login">
 		<p>Username: <input type="text" name="user"/></p>
 		<p>Password: <input type="password" name="pwd"/></p>
 		<p>
-			<c:out value="${param.errorMessage}"/>
+			<c:out value="replace with login err msg"/>
 		</p>
 		<input type="submit" value="Login"/>
 	</form>

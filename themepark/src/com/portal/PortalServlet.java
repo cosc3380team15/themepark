@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Portal
+ * Servlet implementation class PortalServlet
  */
 @WebServlet("/Portal")
-public class Portal extends HttpServlet {
+public class PortalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Portal() {
+    public PortalServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

@@ -2,6 +2,7 @@ package com.portal;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,12 +16,12 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private final String username = "travis";
-	private final String password = "password";
+	private final String username = "travis";	// temporary, delete later.
+	private final String password = "password";	// temporary, delete later.
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,17 +48,16 @@ public class LoginServlet extends HttpServlet {
 		
 		// Temp variable to hold a list of navigation items. This will eventually need to be a list of navigation items
 		// retrieved from a class based on the privileges of the user that is logging in.
-		ArrayList<String> navigationItems = new ArrayList<String>();
-		navigationItems.add("HOME");
-		navigationItems.add("HUMAN RESOURCES");
-		navigationItems.add("MAINTENANCE");
-		String navItems[] = new String[navigationItems.size()];
-		navItems = navigationItems.toArray(navItems);
+		List<NavMenu> navigationItems = new ArrayList<NavMenu>();
+		navigationItems.add(new NavMenu("operations"));
+		navigationItems.add(new NavMenu("statistics"));
+		//String navItems[] = new String[navigationItems.size()];
+		//navItems = navigationItems.toArray(navItems);
 		
 		if (username.equals(user) && password.equals(pwd)) {
 			HttpSession session = request.getSession();
-			session.setAttribute("user", null);
-			session.setAttribute("navItems", navItems);
+			session.setAttribute("user", "Travis");
+			session.setAttribute("navItems", navigationItems);
 			session.setMaxInactiveInterval(30 * 60); // Set session expiration time to 30 minutes.
 			
 			//Cookie cookieUsername = new Cookie("user", user); // Cookie for the name of the user.
@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 			
 			response.sendRedirect("/themepark/Portal");
 		} else {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/themepark/LoginServlet");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/themepark/Login");
 			response.getWriter().println("<p>Incorrect pw</p>");
 			rd.include(request, response);
 		}
