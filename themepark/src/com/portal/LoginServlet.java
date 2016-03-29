@@ -1,6 +1,7 @@
 package com.portal;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,16 +45,28 @@ public class LoginServlet extends HttpServlet {
 		String user = request.getParameter("user");
 		String pwd = request.getParameter("pwd");
 		
+		// Temp variable to hold a list of navigation items. This will eventually need to be a list of navigation items
+		// retrieved from a class based on the privileges of the user that is logging in.
+		ArrayList<String> navigationItems = new ArrayList<String>();
+		navigationItems.add("HOME");
+		navigationItems.add("HUMAN RESOURCES");
+		navigationItems.add("MAINTENANCE");
+		String navItems[] = new String[navigationItems.size()];
+		navItems = navigationItems.toArray(navItems);
+		
 		if (username.equals(user) && password.equals(pwd)) {
 			HttpSession session = request.getSession();
-			session.setAttribute("user", "Travis");
+			session.setAttribute("user", null);
+			session.setAttribute("navItems", navItems);
 			session.setMaxInactiveInterval(30 * 60); // Set session expiration time to 30 minutes.
-			Cookie cookieUsername = new Cookie("user", user);
-			cookieUsername.setMaxAge(30 * 60);
-			response.addCookie(cookieUsername);
-			response.sendRedirect("/Portal");
+			
+			//Cookie cookieUsername = new Cookie("user", user); // Cookie for the name of the user.
+			//cookieUsername.setMaxAge(30 * 60);
+			//response.addCookie(cookieUsername);
+			
+			response.sendRedirect("/themepark/Portal");
 		} else {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/LoginServlet");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/themepark/LoginServlet");
 			response.getWriter().println("<p>Incorrect pw</p>");
 			rd.include(request, response);
 		}
