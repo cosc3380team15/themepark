@@ -13,15 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.sql.*;
+
+import com.general.*;
+
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private final String username = "travis";	// temporary, delete later.
-	private final String password = "password";	// temporary, delete later.
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -54,9 +55,13 @@ public class LoginServlet extends HttpServlet {
 		//String navItems[] = new String[navigationItems.size()];
 		//navItems = navigationItems.toArray(navItems);
 		
-		if (username.equals(user) && password.equals(pwd)) {
+		DBConnector conn = new DBConnector();
+		List<Object[]> results = conn.tryLogin(user, pwd);
+		
+		if (results.size() > 0) {
 			HttpSession session = request.getSession();
-			session.setAttribute("user", "Travis");
+			session.setAttribute("user", results.get(0)[0].toString());
+			session.setAttribute("dept", results.get(0)[2].toString());
 			session.setAttribute("navItems", navigationItems);
 			session.setMaxInactiveInterval(30 * 60); // Set session expiration time to 30 minutes.
 			

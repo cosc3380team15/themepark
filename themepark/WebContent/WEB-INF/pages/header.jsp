@@ -4,7 +4,7 @@
 			<a href="/themepark"><img class="img-responsive" src="${pageContext.request.contextPath}/images/duff-gardens-logo.png" /></a>
 		</div>
 		<div class="col-sm-8">
-			<a href="/themepark/Login" class="employee-portal pull-right">Employee Portal</a>
+			<a href="/themepark/Portal" class="employee-portal pull-right">Employee Portal</a>
 		</div>
 	</div>
 </div>

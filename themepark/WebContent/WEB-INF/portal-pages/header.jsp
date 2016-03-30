@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<p>user: <c:out value="${sessionScope.user}"/></p>
+<p>department: <c:out value="${sessionScope.dept}"/></p>
 <nav>
-	<ul>
+	<ul id="drop-nav">
 		<c:forEach var="parent" items="${sessionScope.navItems}">
 			<li>
 				<a href="${parent.sectionLink}"><c:out value="${parent.sectionName}"/></a>
