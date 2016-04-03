@@ -4,7 +4,7 @@
 
 
 <h2>Welcome to Duff Gardens</h2>
-<h3></h3> <small>Where roaming gangs aren't a big problem anymore!</small></h3>
+<h3> <small>Where roaming gangs aren't a big problem anymore!</small></h3>
 <br />
 <br />
 <br />
@@ -29,8 +29,8 @@
 				<img class="img-responsive" src="${pageContext.request.contextPath}/images/things-to-do.png">
 			</div>
 			<div class="panel-body">
-				<article>Activity 1</article>
-				<article>Activity 2</article>
+				<article><a href="/themepark/ParadeAttraction.jsp" class="left"><font color="blue"> Float Parade</font></a></article>
+				<article><a href="/themepark/ShamuAttraction.jsp" class="left"><font color="blue"> Fish Show</font></a></article>
 				<article>Activity 3</article>
 			</div>
 		</div>
