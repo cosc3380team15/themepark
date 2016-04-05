@@ -116,16 +116,18 @@ button, input, optgroup, select, textarea {
 }
 
 nav {
-	
 	font-family: monospace;
 	font-size: large;
 	font-weight: bold;
 	text-align: left;
-	background-color: #404040;
+	background-color: #FACE21;
 	width: 100%;
 	margin: 10px 0 20px 0;
 	padding: 0px 9% 0px 9%;
 	display: inline-block;
+	border-width: 1px;
+	border-color: #000;
+	border-style: solid;
 }
 
 ul {
@@ -153,12 +155,12 @@ ul li a {
 	padding: 15px 20px 15px 20px;
 	text-decoration: none;
     white-space: nowrap;
-    color: #FFF;
+    color: #000;
 }
 
 ul li a:hover {
-	background: #FFF;
-	color: #404040;
+	background-color: #7D6710;
+	color: #FFF;
 }
 
 li:hover ul {
@@ -176,8 +178,8 @@ li:hover a {
 }
 
 li:hover li a:hover {
-	background-color: #FFF;
-	color: #404040;
+	background-color: #7D6710;
+	color: #FFF;
 }
 
 #drop-nav li ul li {
