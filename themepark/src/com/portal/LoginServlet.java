@@ -50,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 		// Temp variable to hold a list of navigation items. This will eventually need to be a list of navigation items
 		// retrieved from a class based on the privileges of the user that is logging in.
 		List<NavMenu> navigationItems = new ArrayList<NavMenu>();
+		navigationItems.add(new NavMenu("human resources"));
 		navigationItems.add(new NavMenu("operations"));
 		navigationItems.add(new NavMenu("statistics"));
 		//String navItems[] = new String[navigationItems.size()];

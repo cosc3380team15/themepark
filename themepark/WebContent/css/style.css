@@ -45,8 +45,7 @@ button, input, optgroup, select, textarea {
 
 .container-80 {
 	width: 80%;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding: 5px 15px 5px 15px;
 	margin-right: auto;
 	margin-left: auto;
 	clear: both;
@@ -54,8 +53,7 @@ button, input, optgroup, select, textarea {
 
 .container-100 {
 	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding: 5px 15px 5px 15px;
 	margin-right: auto;
 	margin-left: auto;
 	clear: both;
@@ -64,6 +62,7 @@ button, input, optgroup, select, textarea {
 .row {
 	margin-right: -15px;
 	margin-left: -15px;
+	clear: both;
 }
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
@@ -186,7 +185,70 @@ li:hover li a:hover {
 	border-top: 0px;
 }
 
+/***************/
+/**** FORMS ****/
+/***************/
 
+form {
+    background: #F00;
+    padding: 5px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #666;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+form label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+
+form input[type="text"], form input[type="email"], form textarea, form select {
+    color: #555;
+    height: 30px;
+    line-height: 15px;
+    width: 100%;
+    padding: 0px 0px 0px 10px;
+    margin-top: 2px;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    outline: 0;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
+    box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
+    font: normal 14px/14px Arial, Helvetica, sans-serif;
+}
+
+form textarea {
+    height:100px;
+    padding-top: 10px;
+}
+
+form select {
+    background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
+    background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
+   appearance:none;
+    -webkit-appearance:none;
+   -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width:100%;
+    height:30px;
+}
+form .button {
+    background-color: #9DC45F;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-border-radius: 5px;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #949494;
+}
+
+form .button:hover {
+    background-color:#80A24A;
+}
 
 
 
