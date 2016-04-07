@@ -43,6 +43,14 @@ button, input, optgroup, select, textarea {
   color: inherit;
 }
 
+.container-60 {
+	width: 60%;
+	padding: 5px 15px 5px 15px;
+	margin-right: auto;
+	margin-left: auto;
+	clear: both;
+}
+
 .container-80 {
 	width: 80%;
 	padding: 5px 15px 5px 15px;
@@ -59,10 +67,21 @@ button, input, optgroup, select, textarea {
 	clear: both;
 }
 
+.login-box {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20%;
+	width: 300px;
+	height: 200px;
+	background-color: #FACE21;
+	border: 1px solid #404040;
+}
+
 .row {
 	margin-right: -15px;
 	margin-left: -15px;
 	clear: both;
+	
 }
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
@@ -70,6 +89,7 @@ button, input, optgroup, select, textarea {
 	min-height: 1px;
 	padding-right: 15px;
 	padding-left: 15px;
+	margin-top: 10px;
 }
 
 @media (min-width: 992px) {
@@ -129,26 +149,27 @@ nav {
 	border-style: solid;
 }
 
-ul {
+nav ul {
 	list-style: none;
 	padding: 0px;
 	margin: 0px;
 	background-color: inherit;
 }
 
-ul li {
+nav ul li {
 	display: block;
 	position: relative;
 	float: left;
 	border: none;
 	background-color: inherit;
+	z-index: 999;
 }
 
-li ul {
+nav li ul {
 	display: none;
 }
 
-ul li a {
+nav ul li a {
 	display: block;
 	background-color: inherit;
 	padding: 15px 20px 15px 20px;
@@ -157,31 +178,31 @@ ul li a {
     color: #000;
 }
 
-ul li a:hover {
+nav ul li a:hover {
 	background-color: #7D6710;
 	color: #FFF;
 }
 
-li:hover ul {
+nav li:hover ul {
 	display: block;
 	position: absolute;
 }
 
-li:hover li {
+nav li:hover li {
 	float: none;
 }
 
-li:hover a {
+nav li:hover a {
 	background-color: #404040;
 	color: #FFF;
 }
 
-li:hover li a:hover {
+nav li:hover li a:hover {
 	background-color: #7D6710;
 	color: #FFF;
 }
 
-#drop-nav li ul li {
+nav #drop-nav li ul li {
 	border-top: 0px;
 }
 
@@ -189,21 +210,18 @@ li:hover li a:hover {
 /**** FORMS ****/
 /***************/
 
-form {
+form.clean-look {
     padding: 5px;
     font: 12px Arial, Helvetica, sans-serif;
     color: #666;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
 }
 
-form label {
+form.clean-look label {
     display: block;
     margin: 0px 0px 5px;
 }
 
-form input[type="text"], form input[type="email"], form textarea, form select {
+form.clean-look input[type="text"], form input[type="email"], form textarea, form select {
     color: #555;
     height: 30px;
     line-height: 15px;
@@ -218,24 +236,25 @@ form input[type="text"], form input[type="email"], form textarea, form select {
     font: normal 14px/14px Arial, Helvetica, sans-serif;
 }
 
-form textarea {
+form.clean-look textarea {
     height:100px;
     padding-top: 10px;
 }
 
-form select {
-    background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
+form.clean-look select {
+    background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%); 
     background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
-   appearance:none;
-    -webkit-appearance:none;
+   appearance: none;
+    -webkit-appearance: none;
    -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
     width:100%;
     height:30px;
 }
+
 form .button {
-    background-color: #9DC45F;
+    background-color: #598ae6;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-border-radius: 5px;
@@ -246,7 +265,7 @@ form .button {
 }
 
 form .button:hover {
-    background-color:#80A24A;
+    background-color:#255ec7;
 }
 
 

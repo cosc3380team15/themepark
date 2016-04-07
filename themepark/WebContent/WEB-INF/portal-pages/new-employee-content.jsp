@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<form method="POST" action="${pageContext.request.contextPath}/Portal/HumanResources/NewEmployee">
+<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/HumanResources/NewEmployee">
 	<div class="row">
 		<div class="col-9">
 			<h1>New Employee Form</h1>
@@ -21,7 +21,7 @@
 			<label for="department">Department</label>
 			<select name="department">
 				<c:forEach var="dept" items="${sessionScope.departmentNamesList}">
-					<option val="${dept}"><c:out value="${dept}"/></option>
+					<option value="${dept}"><c:out value="${dept}"/></option>
 				</c:forEach>
 			</select>
 		</div>
