@@ -2,7 +2,7 @@
 
 <!-- ONLY ALLOW CONTENT PAST THIS POINT IF A VALID SESSION EXISTS -->
 <c:if test="${sessionScope.user == null}">
-	<jsp:forward page="${pageContext.request.contextPath}/Login">
+	<jsp:forward page="/WEB-INF/portal-pages/login.jsp">
 		<jsp:param name="loginErrorMsg" value="${sessionScope.loginErrorMessage}"/>
 	</jsp:forward>
 </c:if>

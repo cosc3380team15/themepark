@@ -63,4 +63,14 @@ public class DBConnector {
 	public List<Object[]> tryLogin(String username, String password) {
 		return sendReadQuery(String.format("CALL tryLogin('%s', '%s');", username, password));
 	}
+	
+	public List<String> getAllDepartmentNames() {
+		List<Object[]> results = sendReadQuery("CALL getAllDepartmentNames();");
+		List<String> deptNamesList = new ArrayList<String>();
+		for (Object[] row : results) {
+			deptNamesList.add(row[0].toString());
+		}
+		
+		return deptNamesList;
+	}
 }

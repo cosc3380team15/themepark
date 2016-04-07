@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <p>user: <c:out value="${sessionScope.user}"/></p>
 <p>department: <c:out value="${sessionScope.dept}"/></p>
