@@ -9,31 +9,38 @@
 <title>Employee Portal Login</title>
 </head>
 <body>
-	<form class="login-box" method="POST" action="Login">
-	<div class="container-60" style="margin-top: 20px;">
-		<div class="row">
-			<div class="col-12">
-				<label for="user">Username</label>
-				<input type="text" name="user"/>
+	<div id="login-box">
+		<form method="POST" action="Login">
+			<div class="container-60">
+				<div class="row">
+					<div class="col-12">
+						<label for="user">Username</label>
+						<input type="text" name="user"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<label for="pwd">Password</label>
+						<input type="password" name="pwd"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<input class="button" type="submit" value="Login"/>
+					</div>
+				</div>
 			</div>
-		</div>
+		</form>
 		<div class="row">
 			<div class="col-12">
-				<label for="pwd">Password</label>
-				<input type="password" name="pwd"/>
-			</div>
-		</div>
-		<!-- 
-		<p>
-			<c:out value="replace with login err msg"/>
-		</p>
-		-->
-		<div class="row">
-			<div class="col-12">
-				<input class="button" type="submit" value="Login"/>
+				<c:if test="${sessionScope.loginPageMsg != null}">
+					<c:out value="${sessionScope.loginPageMsg}"/>
+				</c:if>
+				<c:if test="${sessionScope.loginPageMsg == null}">
+					<c:out value=""/>
+				</c:if>
 			</div>
 		</div>
 	</div>
-	</form>
 </body>
 </html>

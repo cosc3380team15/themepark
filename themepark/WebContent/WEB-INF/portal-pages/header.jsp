@@ -1,8 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<p>user: <c:out value="${sessionScope.user}"/></p>
-<p>department: <c:out value="${sessionScope.dept}"/></p>
-<p>contextpath: ${pageContext.request.contextPath}</p>
+<div id="logout-container">
+	<c:out value="${sessionScope.user}"/> <a href="${pageContext.request.contextPath}/Logout">Logout</a>
+</div>
+
 <nav>
 	<ul id="drop-nav">
 		<c:forEach var="parent" items="${sessionScope.navItems}">

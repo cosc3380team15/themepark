@@ -14,11 +14,13 @@ article, header, footer {
 }
 
 a {
+	color: #255ec7;
   	background-color: transparent;
 }
 
 a:active, a:hover {
   	outline: 0;
+  	color: #FACE21;
 }
 
 small {
@@ -67,14 +69,23 @@ button, input, optgroup, select, textarea {
 	clear: both;
 }
 
-.login-box {
+#login-box {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20%;
+	padding: 20px 15px 20px 15px;
 	width: 300px;
 	height: 200px;
 	background-color: #FACE21;
 	border: 1px solid #404040;
+}
+
+#logout-container {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	text-align: right;
 }
 
 .row {
@@ -221,7 +232,11 @@ form.clean-look label {
     margin: 0px 0px 5px;
 }
 
-form.clean-look input[type="text"], form input[type="email"], form textarea, form select {
+form.clean-look input[type="text"],
+form.clean-look input[type="tel"],
+form.clean-look input[type="email"],
+form.clean-look textarea,
+form.clean-look select {
     color: #555;
     height: 30px;
     line-height: 15px;
@@ -234,6 +249,14 @@ form.clean-look input[type="text"], form input[type="email"], form textarea, for
     -webkit-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
     box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
     font: normal 14px/14px Arial, Helvetica, sans-serif;
+}
+
+form.clean-look input[type="text"]:invalid,
+form.clean-look input[type="tel"]:invalid,
+form.clean-look input[type="email"]:invalid,
+form.clean-look textarea:invalid,
+form.clean-look select:invalid {
+	border-color: #800;	
 }
 
 form.clean-look textarea {
@@ -265,7 +288,7 @@ form .button {
 }
 
 form .button:hover {
-    background-color:#255ec7;
+    background-color: #255ec7;
 }
 
 

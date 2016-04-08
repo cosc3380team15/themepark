@@ -59,22 +59,19 @@ public class LoginServlet extends HttpServlet {
 		DBConnector conn = new DBConnector();
 		List<Object[]> results = conn.tryLogin(user, pwd);
 		
+		HttpSession session = request.getSession(); // Create the session variable.
+		
 		if (results.size() > 0) {
-			HttpSession session = request.getSession();
 			session.setAttribute("user", String.format("%s %s", results.get(0)[0].toString(), results.get(0)[1].toString()));
 			session.setAttribute("dept", results.get(0)[2].toString());
 			session.setAttribute("navItems", navigationItems);
 			session.setMaxInactiveInterval(30 * 60); // Set session expiration time to 30 minutes.
 			
-			//Cookie cookieUsername = new Cookie("user", user); // Cookie for the name of the user.
-			//cookieUsername.setMaxAge(30 * 60);
-			//response.addCookie(cookieUsername);
-			
 			response.sendRedirect("/themepark/Portal");
 		} else {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/themepark/Login");
-			response.getWriter().println("<p>Incorrect pw</p>");
-			rd.include(request, response);
+			//session.setAttribute("loginPageMsg", "Incorrect username or password.");
+			request.getRequestDispatcher("/WEB-INF/portal-pages/login.jsp").include(request, response);
+			
 		}
 	}
 
