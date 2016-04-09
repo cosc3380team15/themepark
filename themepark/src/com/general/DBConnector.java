@@ -63,4 +63,8 @@ public class DBConnector {
 	public List<Object[]> tryLogin(String username, String password) {
 		return sendReadQuery(String.format("CALL tryLogin('%s', '%s');", username, password));
 	}
+	
+	public List<Object[]> rideLog30days(){
+		return sendReadQuery(String.format("SELECT * FROM rideLog30days);"));
+	}
 }
