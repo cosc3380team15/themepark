@@ -5,7 +5,6 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String department;
-	private String manager;
 	private String hireDate;
 	private String terminationDate;
 	private String address;
@@ -38,12 +37,6 @@ public class Employee {
 	}
 	public void setDepartment(String department) {
 		this.department = department;
-	}
-	public String getManager() {
-		return manager;
-	}
-	public void setManager(String manager) {
-		this.manager = manager;
 	}
 	public String getHireDate() {
 		return hireDate;

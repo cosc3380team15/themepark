@@ -53,8 +53,30 @@ public class NewEmployeeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		DBConnector conn = new DBConnector();
+		int resultInt =
+				conn.addNewEmployee(
+						request.getParameter("department"),
+						request.getParameter("firstName"),
+						request.getParameter("lastName"),
+						request.getParameter("address"),
+						request.getParameter("phoneNumber"),
+						request.getParameter("city"),
+						request.getParameter("state"),
+						request.getParameter("zip"),
+						request.getParameter("dobMonth"),
+						request.getParameter("dobDay"),
+						request.getParameter("dobYear")
+				);
+		
+		if (resultInt >= 1) {
+			String empFullName = String.format("%s %s", request.getParameter("firstName"), request.getParameter("lastName"));
+			request.setAttribute("newEmployeePageMsg", String.format("Successfully added employee, %s!", empFullName));
+		} else {
+			request.setAttribute("newEmployeePageMsg", "Failed to add employee. Employee may already exist. Please check your records.");
+		}
+		
+		request.getRequestDispatcher("/WEB-INF/portal-pages/new-employee.jsp").include(request, response);
 	}
 
 }

@@ -1,21 +1,25 @@
 package com.general;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.portal.Employee;
+import com.sun.xml.internal.ws.client.SenderException;
+
 public class DBConnector {
+	String url = "jdbc:mysql://cosc3380team15.ddns.net:3306/themeparkdb";
+    String user = "dbadmin";
+    String password = "Computerscience1";
 
 	private List<Object[]> sendReadQuery(String query) {
 		Connection con = null;
         Statement st = null;
         ResultSet rs = null;
-
-        String url = "jdbc:mysql://cosc3380team15.ddns.net:3306/themeparkdb";
-        String user = "dbadmin";
-        String password = "Computerscience1";
         
         List<Object[]> records = new ArrayList<Object[]>();
         
@@ -66,10 +70,6 @@ public class DBConnector {
 		Connection con = null;
         Statement st = null;
         ResultSet rs = null;
-
-        String url = "jdbc:mysql://cosc3380team15.ddns.net:3306/themeparkdb";
-        String user = "dbadmin";
-        String password = "Computerscience1";
         
         List<Map<String, Object>> records = new ArrayList<Map<String, Object>>();
         
@@ -116,6 +116,44 @@ public class DBConnector {
         return records;
 	}
 	
+	private int sendUpdateQuery(String query) {
+		Connection con = null;
+        Statement st = null;
+        int resultInt = 0;
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } 
+        catch (ClassNotFoundException err) {
+        	System.out.println("Class not found error: " + err.getMessage());
+        }
+        
+        try {
+            con = DriverManager.getConnection(url, user, password);
+            st = con.createStatement();
+            
+            resultInt = st.executeUpdate(query); // Returns 0 for fail, 1 or more for success and rows affected.
+                        
+            
+        } catch (SQLException err) {
+        	System.out.println("Connection error: " + err.getMessage());
+
+        } finally {
+            try {
+                if (st != null) {
+                    st.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException err) {
+            	System.out.println("Closing error: " + err.getMessage());
+            }
+        }
+        
+        return resultInt;
+	}
+	
 	public List<Object[]> tryLogin(String username, String password) {
 		return sendReadQuery(String.format("CALL tryLogin('%s', '%s');", username, password));
 	}
@@ -134,5 +172,30 @@ public class DBConnector {
 		return sendReadQueryGetMap(String.format("CALL getAllEmployeeInfo();"));
 	}
 	
+	public int addNewEmployee(String deptName, String fName, String lName, String address, String phone, String city, String state, String zip, String dobMonth, String dobDay, String dobYear) {
+		// (1) get today's date
+		java.util.Date today = Calendar.getInstance().getTime();
+	 
+	    // (2) create a date "formatter" (the date format we want)
+	    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		String query = String.format("CALL insertEmployee('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+				deptName,
+				fName,
+				lName,
+				address,
+				phone.replaceAll("-", ""), // Remove dashes from string.
+				city,
+				state,
+				zip,
+				dobYear + "-" + dobMonth + "-" + dobDay,
+				formatter.format(today), // Today's date.
+				"password" // Default password for every new hire.
+		);
+		
+		int resultInt = sendUpdateQuery(query);
+		
+		return resultInt;
+	}
 	
 }

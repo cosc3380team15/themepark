@@ -145,6 +145,10 @@ button, input, optgroup, select, textarea {
   }
 }
 
+.submitButtonColumn {
+	margin-top: 25px;
+}
+
 table {
 	width: 100%;
 }

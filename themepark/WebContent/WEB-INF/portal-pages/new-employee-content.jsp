@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/HumanResources/NewEmployee">
+<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/NewEmployee">
 	<div class="row">
 		<div class="col-9">
 			<h1>New Employee Form</h1>
@@ -43,7 +43,7 @@
 		</div>
 		<div class="col-3">
 			<label for="state">State</label>
-			<input type="text" name="state" placeholder="ex: TX" required pattern=""/>
+			<input type="text" name="state" placeholder="ex: TX" required pattern="\b([A-Z]{2})\b"/>
 		</div>
 		<div class="col-3">
 			<label for="zip">Zip code</label>
@@ -78,8 +78,15 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-9">
+		<div class="col-9 submitButtonColumn">
 			<input class="button" type="submit" value="Submit"/>
 		</div>
 	</div>
 </form>
+<div class="row">
+	<div class="col-6">
+		<c:if test="${newEmployeePageMsg != null}">
+			<c:out value="${newEmployeePageMsg}"/>
+		</c:if>
+	</div>
+</div>
