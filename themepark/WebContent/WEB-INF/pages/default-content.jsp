@@ -16,9 +16,9 @@
 				<img class="img-responsive" src="${pageContext.request.contextPath}/images/rides.png">
 			</div>
 			<div class="panel-body">
-				<article>Ride 1</article>
-				<article>Ride 2</article>
-				<article>Ride 3</article>
+				<article><a href="/themepark/RiverRide.jsp" class="left"><font color="blue"> River Ride</font></a></article>
+	<article><a href="/themepark/FerrisWheelRide.jsp" class="left"><font color="blue"> Ferris Wheel</font></a></article>
+<article><a href="/themepark/RollerCoasterRide.jsp" class="left"><font color="blue"> Roller Coaster</font></a></article>
 			</div>
 		</div>
 	</div>
@@ -31,7 +31,8 @@
 			<div class="panel-body">
 				<article><a href="/themepark/ParadeAttraction.jsp" class="left"><font color="blue"> Float Parade</font></a></article>
 				<article><a href="/themepark/ShamuAttraction.jsp" class="left"><font color="blue"> Fish Show</font></a></article>
-				<article>Activity 3</article>
+				<article><a href="/themepark/BellyDancingAttraction.jsp" class="left"><font color="blue"> Belly Dancing</font></a></article>
+				
 			</div>
 		</div>
 	</div>

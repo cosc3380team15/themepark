@@ -12,7 +12,7 @@
 
 
 
-<div> 
+<div align="center"> 
 				<img class="img-responsive" alt="Captured Whale" src="${pageContext.request.contextPath}/images/shamuPic.jpg"   >
 
 <ul>

@@ -12,7 +12,7 @@
 
 
 
-<div> 
+<div align="center"> 
 				<img class="img-responsive" alt="Bart Balloon" src="${pageContext.request.contextPath}/images/BartFloat.jpeg" width="400" height="400"  >
 
 <ul>
