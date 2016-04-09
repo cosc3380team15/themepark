@@ -33,11 +33,8 @@
 		</form>
 		<div class="row">
 			<div class="col-12">
-				<c:if test="${sessionScope.loginPageMsg != null}">
-					<c:out value="${sessionScope.loginPageMsg}"/>
-				</c:if>
-				<c:if test="${sessionScope.loginPageMsg == null}">
-					<c:out value=""/>
+				<c:if test="${loginPageMsg != null}">
+					<c:out value="${loginPageMsg}"/>
 				</c:if>
 			</div>
 		</div>
