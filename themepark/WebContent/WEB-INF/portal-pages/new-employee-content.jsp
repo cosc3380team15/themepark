@@ -43,7 +43,7 @@
 		</div>
 		<div class="col-3">
 			<label for="state">State</label>
-			<input type="text" name="state" placeholder="ex: TX" required/>
+			<input type="text" name="state" placeholder="ex: TX" required pattern ="[A-Z]{2}"/>
 		</div>
 		<div class="col-3">
 			<label for="zip">Zip code</label>

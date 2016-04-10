@@ -60,7 +60,7 @@ public class NewEmployeeServlet extends HttpServlet {
 		//String first, String last, String dept, String address, String phone, String city, String state, String zip, Date dob, Date hire, String pw
 		String first = request.getParameter("firstName");
 		String last = request.getParameter("lastName");
-		String dept = request.getParameter("dept");
+		String dept = request.getParameter("department");
 		String address = request.getParameter("address");
 		String phone = request.getParameter("phoneNumber");
 		String city = request.getParameter("city");
