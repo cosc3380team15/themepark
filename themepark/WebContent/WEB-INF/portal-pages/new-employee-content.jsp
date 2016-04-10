@@ -83,10 +83,12 @@
 		</div>
 	</div>
 </form>
-<div class="row">
-	<div class="col-6">
-		<c:if test="${newEmployeePageMsg != null}">
-			<c:out value="${newEmployeePageMsg}"/>
-		</c:if>
+<c:if test="${newEmployeePageMsg != null}">
+	<div class="row">
+		<div class="col-12">
+			<span class="messageBox">
+				<c:out value="${newEmployeePageMsg}"/>
+			</span>
+		</div>
 	</div>
-</div>
+</c:if>

@@ -169,7 +169,13 @@ public class DBConnector {
 	}
 	
 	public List<Map<String, Object>> getAllEmployeeInfo() {
-		return sendReadQueryGetMap(String.format("CALL getAllEmployeeInfo();"));
+		return sendReadQueryGetMap("CALL getAllEmployeeInfo();");
+	}
+	
+	public Map<String, Object> getSingleEmployeeInfo(int empId) {
+		List<Map<String, Object>> res = sendReadQueryGetMap(String.format("CALL getSingleEmployeeInfo(%d);", empId));
+		
+		return res.get(0);
 	}
 	
 	public int addNewEmployee(String deptName, String fName, String lName, String address, String phone, String city, String state, String zip, String dobMonth, String dobDay, String dobYear) {
@@ -191,6 +197,25 @@ public class DBConnector {
 				dobYear + "-" + dobMonth + "-" + dobDay,
 				formatter.format(today), // Today's date.
 				"password" // Default password for every new hire.
+		);
+		
+		int resultInt = sendUpdateQuery(query);
+		
+		return resultInt;
+	}
+	
+	public int updateEmployee(int empId, String deptName, String fName, String lName, String address, String phone, String city, String state, String zip, String dobMonth, String dobDay, String dobYear) {
+		String query = String.format("CALL updateEmployeeInfo(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+				empId,
+				deptName,
+				fName,
+				lName,
+				address,
+				phone.replaceAll("-", ""), // Remove dashes from string.
+				city,
+				state,
+				zip,
+				dobYear + "-" + dobMonth + "-" + dobDay
 		);
 		
 		int resultInt = sendUpdateQuery(query);

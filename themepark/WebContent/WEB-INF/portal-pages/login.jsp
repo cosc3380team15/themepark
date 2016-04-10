@@ -31,13 +31,15 @@
 				</div>
 			</div>
 		</form>
-		<div class="row">
-			<div class="col-12">
-				<c:if test="${loginPageMsg != null}">
-					<c:out value="${loginPageMsg}"/>
-				</c:if>
+		<c:if test="${loginPageMsg != null}">
+			<div class="row">
+				<div class="col-12">
+					<span class="messageBox">
+						<c:out value="${loginPageMsg}"/>
+					</span>
+				</div>
 			</div>
-		</div>
+		</c:if>
 	</div>
 </body>
 </html>
