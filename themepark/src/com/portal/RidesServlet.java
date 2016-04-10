@@ -30,7 +30,13 @@ public class RidesServlet extends HttpServlet {
 		request.setAttribute("rides", rides);
 		
 		List<Ride> ride = (List<Ride>)request.getAttribute("rides");
-
+		
+		System.out.println(ride.get(0).getActivityID());
+		System.out.println(ride.get(0).getRideName());
+		System.out.println(ride.get(0).getRideID());
+		System.out.println(ride.get(0).getDate());
+		System.out.println(ride.get(0).getRideCount());
+		
 		request.getRequestDispatcher("/WEB-INF/portal-pages/rides.jsp").forward(request, response);
 	}
 

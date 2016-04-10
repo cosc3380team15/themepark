@@ -8,15 +8,18 @@
 <title>Ride Statistics</title>
 </head>
 <body>
-<h2>Ride log for the past 30 days</h2>
-<table class="statTable">
-	<tr class="statTH">
+<%@ page import="java.util.*"%>
+<%@ page import="models.Ride"%>
+<table>
+	<tr>
 		<td>Activity ID</td>
 		<td>Ride Name</td>
 		<td>Ride ID</td>
 		<td>Date</td>
 		<td>Ride Count</td>
 	</tr>
+<% List<Ride> ride = (List<Ride>)request.getAttribute("rides");%>
+
     <c:forEach items="${rides}" var="ride">
         <tr>
             <td><c:out value="${ride.activityID}">Null</c:out></td>
@@ -27,6 +30,7 @@
         </tr>
     </c:forEach>
 </table>
+
 
 </body>
 </html>
