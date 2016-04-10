@@ -13,7 +13,7 @@
 
 
 <div align="center"> 
-				<img class="img-responsive" alt="River Ride" src="${pageContext.request.contextPath}/images/RiverRdie.png"   >
+				<img class="img-responsive" alt="River Ride" src="${pageContext.request.contextPath}/images/RiverRdie.png" width="400" height="400"  >
 
 <ul>
 <li>A Throwback to the Classic Mississippi County </li>

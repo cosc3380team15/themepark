@@ -13,7 +13,7 @@
 
 
 <div align="center"> 
-				<img class="img-responsive" alt="Seductive??" src="${pageContext.request.contextPath}/images/SimpsonsBellyDancing.jpg"   >
+				<img class="img-responsive" alt="Seductive??" src="${pageContext.request.contextPath}/images/SimpsonsBellyDancing.jpg"  width="400" height="400" >
 
 <ul>
 <li>Lessons Available for $10</li>

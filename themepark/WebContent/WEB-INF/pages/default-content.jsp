@@ -43,10 +43,10 @@
 				<img class="img-responsive" src="${pageContext.request.contextPath}/images/food-and-drink.png">
 			</div>
 			<div class="panel-body">
-				<article>Restaurant 1</article>
-				<article>Restaurant 2</article>
-				<article>Restaurant 3</article>
-			</div>
+				<article><a href="/themepark/BeerGarden.jsp" class="left"><font color="blue"> Duff Beer Garden</font></a></article>
+				<article><a href="/themepark/Sushi.jsp" class="left"><font color="blue"> Sushi</font></a></article>
+				<article><a href="/themepark/WineBar.jsp" class="left"><font color="blue"> Wine Bar</font></a></article>
+							</div>
 		</div>
 	</div>
 </div>
