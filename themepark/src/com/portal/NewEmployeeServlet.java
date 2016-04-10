@@ -1,6 +1,9 @@
 package com.portal;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -53,8 +56,40 @@ public class NewEmployeeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// get employee info from webpage
+		//String first, String last, String dept, String address, String phone, String city, String state, String zip, Date dob, Date hire, String pw
+		String first = request.getParameter("firstName");
+		String last = request.getParameter("lastName");
+		String dept = request.getParameter("dept");
+		String address = request.getParameter("address");
+		String phone = request.getParameter("phoneNumber");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		String zip = request.getParameter("zip");
+		String dobMonth = request.getParameter("dobMonth");
+		String dobDay = request.getParameter("dobDay");
+		String dobYear = request.getParameter("dobYear");
+		
+		// convert dob
+		String dobS = dobYear + "-" + dobMonth + "-" + dobDay;
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date dobUtil = null;
+		try {
+			dobUtil = formatter.parse(dobS);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		java.sql.Date dobSql = new java.sql.Date(dobUtil.getTime());
+		
+		// create hire date
+		java.util.Date hireUtil = new java.util.Date();
+	    java.sql.Date hireSql = new java.sql.Date(hireUtil.getTime());
+		
+		DBConnector conn = new DBConnector();
+		conn.insertEmployee(first,last,dept,address,phone,city,state,zip,dobSql,hireSql,"password");
+		
+		response.sendRedirect("/themepark/Portal/");
 	}
 
 }

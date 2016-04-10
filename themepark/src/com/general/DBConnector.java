@@ -73,4 +73,8 @@ public class DBConnector {
 		
 		return deptNamesList;
 	}
+	
+	public void insertEmployee(String first, String last, String dept, String address, String phone, String city, String state, String zip, Date dob, Date hire, String pw) {
+		sendReadQuery("CALL insertEmployee(dept,first,last,address,phone,city,state,zip,dob,hire,pw);");
+	}
 }
