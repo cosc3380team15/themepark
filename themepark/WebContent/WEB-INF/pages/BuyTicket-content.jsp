@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<h2>Reserve Duff  Gardens Tickets</h2>
+<h2>Reserve Duff Gardens Tickets</h2>
 <br />
 <body align="center">
 <div class="panel panel-default">
@@ -15,7 +15,7 @@
 				<div class="row">
 					<div class="col-12">
 						<label for="user"> First Name</label>
-						<input type="text" name="user"/>
+						<input type="text" name="first"/>
 					</div>
 				</div>
 				
@@ -23,7 +23,7 @@
 				<div class="row">
 					<div class="col-12">
 						<label for="user"> Last Name</label>
-						<input type="text" name="user"/>
+						<input type="text" name="last"/>
 					</div>
 				</div>
 				
@@ -31,36 +31,53 @@
 				<div class="row">
 					<div class="col-12">
 						<label for="user"> Email Address</label>
-						<input type="text" name="pwd"/>
+						<input type="text" name="email"/>
 					</div>
 				</div>
 				<br/>
 				<b>Number of Tickets</b>
 				<br/>
 				
-				 <select name="Number of Tickets">
+				 one-day: <select name="oneday">
+				 <option value="0">0</option>
+    			 <option value="1">1</option>
+			    <option value="2">2</option>
+			    <option value="3">3</option>
+			    <option value="4">4</option>
+			    <option value="5">5</option>
+			    <option value="6">6</option>
+			    <option value="7">7</option>
+			    <option value="8">8</option>
+			    <option value="9">9</option>
+			    <option value="10">10</option>
+  </select>
+  <!-- 
+  seasonal: <select name="seasonal">
+  <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
-     <option value="5">5</option>
-      <option value="6">6</option>
-       <option value="7">7</option>
-        <option value="8">8</option>
-         <option value="9">9</option>
-          <option value="10">10</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
   </select>
+  -->
 			<br/>	
 			
-			<!-- THIS IS AN ERROR  -->
+<!-- Date not needed?
+			<!-- THIS IS AN ERROR  -/->
 			<label>Date: (Does not seem to showing up properly? TO FIX)</label>
-			<input name="datetime" type="datetime-local"/>
-
+			<input name="date" type="date"/>
+-->
 			
 				<br/>
 				<div class="row">
 					<div class="col-12 submitButtonColumn">
-						<input class="button" type="submit" value="Login"/>
+						<input class="button" type="submit" value="Submit"/>
 					</div>
 				</div>
 				
@@ -91,7 +108,7 @@
 	
 	<!-- Check If you Already have Tickets -->
 	
-	<h2>Check Exsisting Reservation</h2>
+	<h2>Check Existing Reservation</h2>
 	<br />
 <body align="center">
 <div class="panel panel-default">
@@ -122,33 +139,36 @@
 						<input type="text" name="pwd"/>
 					</div>
 				</div>
+				
+				<!-- DO NOT NEED?
 				<br/>
 				<b>Number of Tickets</b>
 				<br/>
 				
-				 <select name="Number of Tickets">
+				 <select name="one-day">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
-     <option value="5">5</option>
-      <option value="6">6</option>
-       <option value="7">7</option>
-        <option value="8">8</option>
-         <option value="9">9</option>
-          <option value="10">10</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
   </select>
-			<br/>	
+
+			<br/>
 			
-			<!-- THIS IS AN ERROR  -->
+			<!-- THIS IS AN ERROR  -/->
 			<label>Date: (Does not seem to showing up properly? TO FIX)</label>
 			<input name="datetime" type="datetime-local"/>
-
+-->
 			
 				<br/>
 				<div class="row">
 					<div class="col-12 submitButtonColumn">
-						<input class="button" type="submit" value="Login"/>
+						<input class="button" type="submit" value="Submit"/>
 					</div>
 				</div>
 				

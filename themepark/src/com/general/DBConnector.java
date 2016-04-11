@@ -241,6 +241,27 @@ public class DBConnector {
 		return sendUpdateQuery(String.format("CALL changeDepartmentManager(%d, %d);", deptId, empId));
 	}
 	
+	public int insertOnlineSale(String type, String first, String last, String email, String phone, int totalPurchased, double totalPrice) {
+		java.util.Date today = Calendar.getInstance().getTime();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		String query = String.format("CALL insertOnlineSale('%s', '%s', '%s', '%s', '%s', '%s', %d, %d);",
+				type,
+				formatter.format(today),
+				first,
+				last,
+				email,
+				phone,
+				totalPurchased,
+				totalPrice
+				);
+		
+		int resultInt = sendUpdateQuery(query);
+		return resultInt;
+	}
+	
+	/*
+	
 	public void insertDailyRideLog(String name, Date day, int count) {
 		sendReadQuery("CALL insertDailyRideLog(name,day,count);");
 	}
@@ -253,10 +274,6 @@ public class DBConnector {
 		sendReadQuery("CALL insertDeptManager(id);");
 	}
 	
-	public void insertEmployee(String first, String last, String dept, String address, String phone, String city, String state, String zip, Date dob, Date hire, String pw) {
-		sendReadQuery("CALL insertEmployee('Information Technology','"+first+"','"+last+"','"+address+"','"+phone+"','"+city+"','"+state+"','"+zip+"','"+dob+"','"+hire+"','"+pw+"');");
-	}
-	
 	public void insertMaintenanceLog(String name, String type, java.sql.Timestamp start, java.sql.Timestamp end, String problem, String resolution) {
 		sendReadQuery("CALL insertMaintenanceLog(name,type,start,end,problem,resolution);");
 	}
@@ -265,9 +282,6 @@ public class DBConnector {
 		sendReadQuery("CALL insertMaintenanceType(type);");
 	}
 	
-	public void insertOnlineSale(String type, Date buyDate, String first, String last, String email, String phone, int totalPurchased, double totalPrice) {
-		sendReadQuery("CALL inserOnlineSale(type,buyDate,first,last,email,phone,totalPurchased,totalPrice);");
-	}
 	
 	public void insertRide(String name, String descr) {
 		sendReadQuery("CALL insertRide(name,descr);");
@@ -304,5 +318,6 @@ public class DBConnector {
 	public void updateEmployeeInfo(int id, String dept, String first, String last, String address, String phone, String cty, String st, String zp, Date dob) {
 		sendReadQuery("CALL updateEmployeeInfo(id,dept,first,last,address,phone,cty,st,zp,dob);");
 	}
+	*/
 
 }
