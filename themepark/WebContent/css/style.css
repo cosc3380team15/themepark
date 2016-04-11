@@ -52,8 +52,11 @@ button, input, optgroup, select, textarea {
 }
 
 span {
-	width: 99%;
+	width: 95%;
 	float: left;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 10px;
 }
 
 ul.blank-style {
@@ -269,7 +272,7 @@ div > span {
 .white-panel-box {
 	background-color: #FFF;
 	border: 1px solid #000;
-	width: 100%;
+	width: 95%;
 	padding: 8px;
 	border-radius: 5px;
 }
