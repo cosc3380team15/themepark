@@ -5,7 +5,7 @@
 <h2>Duff Park Rides</h2>
 <div class="row">
 	<div class="col-6 center-text">
-		<article class="center-text"><a href="/themepark/RollerCoaster.jsp">Roller Coaster</a></article>
+		<article class="center-text"><a href="/themepark/RollerCoasterRide.jsp">Roller Coaster</a></article>
 		<article><img class="responsive-400" src="${pageContext.request.contextPath}/images/RollerCoast.png"></article>
 	</div>
 	<div class="col-6 center-text">
