@@ -20,7 +20,7 @@
 		<div class="col-3">
 			<label for="department">Department</label>
 			<select name="department">
-				<c:forEach var="dept" items="${sessionScope.departmentNamesList}">
+				<c:forEach var="dept" items="${departmentNamesList}">
 					<option value="${dept}"><c:out value="${dept}"/></option>
 				</c:forEach>
 			</select>
