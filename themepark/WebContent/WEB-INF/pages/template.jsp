@@ -11,7 +11,7 @@
 		<!-- Style tag which will override small, default customizations of style.css -->
 		<style type="text/css">
 			body {
-				background-image: url("themepark/images/red-bubbles-background.jpg") !important;
+				background-image: url("../themepark/images/red-bubbles-background.jpg") !important;
 				background-repeat: repeat;
 			}
 			a.employee-portal { 
@@ -26,8 +26,8 @@
 		<div class="container-80" style="background-color: #F3F3F3; min-height: 500px;">
 			<jsp:include page="/WEB-INF/pages/${param.content}.jsp"></jsp:include>
 		</div>
-		<hr>
-		</body>
+	</body>
+	<hr>
 	<footer>
 		<div class="container-80" style="background-color: #F3F3F3;">
 			<jsp:include page="/WEB-INF/pages/footer.jsp"></jsp:include>
