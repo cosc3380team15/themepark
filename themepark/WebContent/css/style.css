@@ -71,6 +71,12 @@ button, input, optgroup, select, textarea {
 	clear: both;
 }
 
+img.panel-img-300 {
+	border-radius: 5px;
+	width: 300px;
+	height: 200px;
+}
+
 #login-box {
 	margin-left: auto;
 	margin-right: auto;
@@ -99,8 +105,8 @@ button, input, optgroup, select, textarea {
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
 	position: relative;
 	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: 5px;
+	padding-left: 5px;
 	margin-top: 10px;
 }
 
@@ -109,40 +115,40 @@ button, input, optgroup, select, textarea {
     float: left;
   }
   .col-12 {
-    width: 100%;
+    width: 95%;
   }
   .col-11 {
-    width: 91.66666667%;
+    width: 86.45%;
   }
   .col-10 {
-    width: 83.33333333%;
+    width: 79.1635%;
   }
   .col-9 {
-    width: 75%;
+    width: 71.25%;
   }
   .col-8 {
-    width: 66.66666667%;
+    width: 63.327%;
   }
   .col-7 {
-    width: 58.33333333%;
+    width: 55.4135%;
   }
   .col-6 {
-    width: 50%;
+    width: 47.5%;
   }
   .col-5 {
-    width: 41.66666667%;
+    width: 39.577%;
   }
   .col-4 {
-    width: 33.33333333%;
+    width: 31.6635%;
   }
   .col-3 {
-    width: 25%;
+    width: 23.75%;
   }
   .col-2 {
-    width: 16.66666667%;
+    width: 15.827%;
   }
   .col-1 {
-    width: 8.33333333%;
+    width: 7.9135%;
   }
 }
 

@@ -6,43 +6,31 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>${param.title}</title>
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 		
-		<!-- Style tag which will override small, default customizations of bootstrap.css -->
+		<!-- Style tag which will override small, default customizations of style.css -->
 		<style type="text/css">
-			body { background-color: #CC1517; }
-			ul li a { color: #7D6710 !important; }
-			ul li a:hover {
-				color: #FFF !important;
-				background-color: 	 !important;			
+			body {
+				background-image: url("themepark/images/red-bubbles-background.jpg") !important;
+				background-repeat: repeat;
 			}
-			nav { background-color: #FACE21 !important;	}
-			a.employee-portal { color: #FFF !important; }
+			a.employee-portal { 
+				color: #FFF !important;
+			}
 			a.employee-portal:hover { color: #FACE21 !important; }
 		</style>
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/pages/header.jsp"></jsp:include>
 		
-		<div class="container" style="background-color: #F3F3F3; min-height: 500px;">
+		<div class="container-80" style="background-color: #F3F3F3; min-height: 500px;">
 			<jsp:include page="/WEB-INF/pages/${param.content}.jsp"></jsp:include>
 		</div>
 		<hr>
 		</body>
-		
-	
-	
-	
 	<footer>
-	<font color="white">
-	<div align="center">
-	<div class="container" style="background-color: #CC1517;">
+		<div class="container-80" style="background-color: #F3F3F3;">
 			<jsp:include page="/WEB-INF/pages/footer.jsp"></jsp:include>
 		</div>
-	</div>
-	</font>
 	</footer>
-	
-	
-	
 </html>
