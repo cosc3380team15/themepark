@@ -245,7 +245,7 @@ public class DBConnector {
 		java.util.Date today = Calendar.getInstance().getTime();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
-		String query = String.format("CALL insertOnlineSale('%s', '%s', '%s', '%s', '%s', '%s', %d, %d);",
+		String query = String.format("CALL insertOnlineSale('%s', '%s', '%s', '%s', '%s', '%s', %d, %f);",
 				type,
 				formatter.format(today),
 				first,

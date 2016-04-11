@@ -29,7 +29,7 @@ public class BuyTicketServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("/BuyTicket.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/BuyTicket-content.jsp").forward(request, response);
 	}
 
 	/**
@@ -44,14 +44,16 @@ public class BuyTicketServlet extends HttpServlet {
 				request.getParameter("email"),
 				"", // add phone number later
 				Integer.parseInt(request.getParameter("oneday")),
-				35.00*(Integer.parseInt(request.getParameter("oneday")))
+				35.00*(Integer.parseInt(request.getParameter("oneday"))) // must change later
 				);
 		
 		if (resultInt >= 1) {
-			request.setAttribute("msg", "Successfully bought tickets.");
+			request.setAttribute("buyTicketMsg", "Successfully bought tickets.");
+			response.sendRedirect("/WEB-INF/pages/viewPurchase-content.jsp");
 		} else {
-			request.setAttribute("msg", "Failed to buy tickets.");
-		}	
+			request.setAttribute("buyTicketMsg", "Failed to buy tickets.");
+		}
+		request.getRequestDispatcher("/BuyTicket.jsp").include(request, response);
 		/*
 		resultInt = 
 				conn.insertOnlineSale(
@@ -65,7 +67,6 @@ public class BuyTicketServlet extends HttpServlet {
 				);
 				*/
 		
-		request.getRequestDispatcher("/BuyTicket.jsp").include(request, response);
 
 		
 	}

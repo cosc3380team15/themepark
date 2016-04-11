@@ -9,9 +9,12 @@
 <div class="panel panel-default">
 			<div class="panel-body">
 			<div class="col-sm-4">
+			
 	<div id="login-box">
-		<form method="POST" action="Login">
+		<form method="POST" action="BuyTicket.jsp">
 			<div class="container-60">
+			
+			
 				<div class="row">
 					<div class="col-12">
 						<label for="user"> First Name</label>
@@ -80,11 +83,19 @@
 						<input class="button" type="submit" value="Submit"/>
 					</div>
 				</div>
-				
-				
-				
 			</div>
 		</form>
+		<c:if test="${buyTicketMsg != null}">
+			<div class="row">
+				<div class="col-12">
+					<span class="messageBox">
+						<c:out value="${buyTicketMsg}"/>
+					</span>
+				</div>
+			</div>
+			</c:if>
+		
+		
 		</div>
 		</div>
 		</div>
@@ -114,8 +125,8 @@
 <div class="panel panel-default">
 			<div class="panel-body">
 			<div class="col-sm-4">
-	<div id="login-box">
-		<form method="POST" action="Login">
+	<div id="reservation">
+		<form method="POST" action="Login"> <!-- edit this later -->
 			<div class="container-60">
 				<div class="row">
 					<div class="col-12">
