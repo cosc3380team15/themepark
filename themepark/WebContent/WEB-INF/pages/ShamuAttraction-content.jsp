@@ -20,7 +20,7 @@
 <li>Performs every hour!</li> 
 <li>Kendrick Loves Birthday Parties! </li>
 <li>Ft. Flippy the Conch</li>
-<img class="img-responsive" alt="The Magic Conch Knows All" src="${pageContext.request.contextPath}/images/conch.jpg"  height="75" width="75" >
+<img class="img-responsive" alt="The Magic Conch Knows All" src="${pageContext.request.contextPath}/images/conch.jpg"  height="150" width="150" >
 </ul>
 
 </div>

@@ -15,7 +15,7 @@
 			<li><a href="/themepark/Rides.jsp" class="left"><font color="blue"> Rides</font></a></li>
 			<li><a href="/themepark/HoursDirections.jsp" class="left"><font color="blue"> Hours & Directions</font></a></li>
 			<li><a href="/themepark/Pictures.jsp" class="left"><font color="blue"> Pictures</font></a></li>
-			<li><a href="/themepark/BuyTicket.jsp" class="left"><font color="blue"> Buy Ticket</font></a></li>
+			<li><a href="/themepark/BuyTicket.jsp" class="left"><font color="blue"> Buy Tickets</font></a></li>
 			
 		</ul>
 	</div>
