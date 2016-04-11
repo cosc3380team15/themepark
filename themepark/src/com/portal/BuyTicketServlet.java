@@ -12,7 +12,7 @@ import com.general.DBConnector;
 /**
  * Servlet implementation class BuyTicketServlet
  */
-@WebServlet("/BuyTicketServlet")
+@WebServlet("/BuyTicket")
 public class BuyTicketServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,7 +29,7 @@ public class BuyTicketServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("/WEB-INF/BuyTicket-content.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/BuyTicket.jsp").forward(request, response);
 	}
 
 	/**
@@ -49,11 +49,11 @@ public class BuyTicketServlet extends HttpServlet {
 		
 		if (resultInt >= 1) {
 			request.setAttribute("buyTicketMsg", "Successfully bought tickets.");
-			response.sendRedirect("/WEB-INF/pages/viewPurchase-content.jsp");
+			request.getRequestDispatcher("/WEB-INF/pages/viewPurchase.jsp").forward(request, response);
 		} else {
 			request.setAttribute("buyTicketMsg", "Failed to buy tickets.");
 		}
-		request.getRequestDispatcher("/BuyTicket.jsp").include(request, response);
+		request.getRequestDispatcher("/WEB-INF/BuyTicket.jsp").forward(request, response);
 		/*
 		resultInt = 
 				conn.insertOnlineSale(
