@@ -11,11 +11,12 @@
 <nav role="navigation" class="navbar navbar-default">
 	<div class="container">
 		<ul class="nav navbar-nav">
-			<li><a href="#">ACTIVITIES</a></li>
-			<li><a href="#">RIDES</a></li>
-			<li><a href="#">HOURS & DIRECTIONS</a></li>
-			<li><a href="#">PICTURES</a></li>
-			<li><a href="#">BUY TICKETS</a></li>
+			<li><a href="/themepark/Activities.jsp" class="left"><font color="blue"> Activities</font></a></li>
+			<li><a href="/themepark/Rides.jsp" class="left"><font color="blue"> Rides</font></a></li>
+			<li><a href="/themepark/HoursDirections.jsp" class="left"><font color="blue"> Hours & Directions</font></a></li>
+			<li><a href="/themepark/Pictures.jsp" class="left"><font color="blue"> Pictures</font></a></li>
+			<li><a href="/themepark/BuyTicket.jsp" class="left"><font color="blue"> Buy Ticket</font></a></li>
+			
 		</ul>
 	</div>
 </nav>

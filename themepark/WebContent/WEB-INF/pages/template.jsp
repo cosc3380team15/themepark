@@ -14,7 +14,7 @@
 			ul li a { color: #7D6710 !important; }
 			ul li a:hover {
 				color: #FFF !important;
-				background-color: #7D6710 !important;			
+				background-color: 	 !important;			
 			}
 			nav { background-color: #FACE21 !important;	}
 			a.employee-portal { color: #FFF !important; }
@@ -28,8 +28,21 @@
 			<jsp:include page="/WEB-INF/pages/${param.content}.jsp"></jsp:include>
 		</div>
 		<hr>
-		<div class="container" style="background-color: #F3F3F3;">
+		</body>
+		
+	
+	
+	
+	<footer>
+	<font color="white">
+	<div align="center">
+	<div class="container" style="background-color: #CC1517;">
 			<jsp:include page="/WEB-INF/pages/footer.jsp"></jsp:include>
 		</div>
-	</body>
+	</div>
+	</font>
+	</footer>
+	
+	
+	
 </html>

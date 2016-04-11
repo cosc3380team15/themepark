@@ -6,8 +6,7 @@
 <h2>Welcome to Duff Gardens</h2>
 <h3> <small>Where roaming gangs aren't a big problem anymore!</small></h3>
 <br />
-<br />
-<br />
+
 <div class="row">
 	<div class="col-sm-4">
 		<div class="panel panel-default">
