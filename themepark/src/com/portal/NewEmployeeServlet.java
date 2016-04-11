@@ -1,6 +1,9 @@
 package com.portal;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -35,15 +38,7 @@ public class NewEmployeeServlet extends HttpServlet {
 		List<String> results = conn.getAllDepartmentNames();
 		
 		if (results.size() > 0) {
-			HttpSession session = request.getSession();
-			session.setAttribute("departmentNamesList", results);
-			//session.setMaxInactiveInterval(30 * 60); // Set session expiration time to 30 minutes.
-			
-			//Cookie cookieUsername = new Cookie("user", user); // Cookie for the name of the user.
-			//cookieUsername.setMaxAge(30 * 60);
-			//response.addCookie(cookieUsername);
-			
-			//response.sendRedirect("/themepark/Portal");
+			request.setAttribute("departmentNamesList", results);
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/portal-pages/new-employee.jsp").forward(request, response);
@@ -53,6 +48,7 @@ public class NewEmployeeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		DBConnector conn = new DBConnector();
 		int resultInt =
 				conn.addNewEmployee(
