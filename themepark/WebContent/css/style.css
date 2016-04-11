@@ -397,6 +397,7 @@ form.clean-look {
 form.clean-look label {
     display: block;
     margin: 0px 0px 5px;
+    min-width: 95%;
 }
 
 form.clean-look input[type="text"],
@@ -407,7 +408,7 @@ form.clean-look select {
     color: #555;
     height: 30px;
     line-height: 15px;
-    width: 95%;
+    min-width: 95%;
     padding: 0px 0px 0px 10px;
     margin-top: 2px;
     border: 1px solid #E5E5E5;

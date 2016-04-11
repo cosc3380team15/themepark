@@ -11,35 +11,38 @@
 <body>
 	<div id="login-box">
 		<form method="POST" action="Login">
-			<div class="container-60">
-				<div class="row">
-					<div class="col-12">
-						<label for="user">Username</label>
-						<input type="text" name="user"/>
-					</div>
+			<div class="row">
+				<div class="col-10">
+					<label for="user">Username</label>
+					<input type="text" name="user"/>
 				</div>
-				<div class="row">
-					<div class="col-12">
-						<label for="pwd">Password</label>
-						<input type="password" name="pwd"/>
-					</div>
+				<div class="col-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-10">
+					<label for="pwd">Password</label>
+					<input type="password" name="pwd"/>
 				</div>
-				<div class="row">
-					<div class="col-12 submitButtonColumn">
-						<input class="button" type="submit" value="Login"/>
-					</div>
+				<div class="col-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-10 submitButtonColumn">
+					<input class="button" type="submit" value="Login"/>
 				</div>
+				<div class="col-2"></div>
+			</div>
+			<div class="row">
+				<c:if test="${loginPageMsg != null}">
+						<div class="col-10">
+							<span class="messageBox">
+								<c:out value="${loginPageMsg}"/>
+							</span>
+						</div>
+						<div class="col-2"></div>
+				</c:if>
 			</div>
 		</form>
-		<c:if test="${loginPageMsg != null}">
-			<div class="row">
-				<div class="col-12">
-					<span class="messageBox">
-						<c:out value="${loginPageMsg}"/>
-					</span>
-				</div>
-			</div>
-		</c:if>
+		<div class="row"></div>
 	</div>
 </body>
 </html>

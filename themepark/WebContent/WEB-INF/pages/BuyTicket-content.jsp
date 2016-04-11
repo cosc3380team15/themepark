@@ -87,7 +87,7 @@
 <div class="row">
 	<div class="col-12">
 		<h2>Check Purchase History</h2>
-		<form class="clean-look" method="POST" action="PurchaseHistory">
+		<form class="clean-look" method="POST" action="OnlinePurchaseHistory">
 			<div class="row">
 				<div class="col-4">
 					<label for="phEmail">Email address</label>

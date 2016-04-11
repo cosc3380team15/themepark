@@ -263,6 +263,13 @@ public class DBConnector {
 		return sendReadQuery("SELECT * FROM ticket_price;");
 	}
 	
+	public List<Map<String, Object>> getOnlinePurchaseHistory(String email, String phone) {
+		return sendReadQueryGetMap(String.format("CALL getOnlinePurchaseHistory('%s', '%s');",
+				email,
+				phone.replaceAll("-", ""))
+				);
+	}
+	
 	/*
 	
 	public void insertDailyRideLog(String name, Date day, int count) {
