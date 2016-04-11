@@ -9,20 +9,16 @@
 </head>
 <body>
 <h2>Ride log for the past 30 days</h2>
-<table class="statTable">
-	<tr class="statTH">
-		<td>Activity Log ID</td>
-		<td>Ride Name</td>
-		<td>Ride ID</td>
-		<td>Date</td>
-		<td>Ride Count</td>
+<table class="clean-look">
+	<tr >
+		<th>Date</th>
+		<th>Ride Name</th>
+		<th>Ride Count</th>
 	</tr>
     <c:forEach items="${rides}" var="ride">
         <tr>
-            <td><c:out value="${ride.activityID}">Null</c:out></td>
+        	<td><c:out value="${ride.date}">Null</c:out></td>
             <td><c:out value="${ride.rideName}">Null</c:out></td>
-            <td><c:out value="${ride.rideID}">Null</c:out></td>
-            <td><c:out value="${ride.date}">Null</c:out></td>
             <td><c:out value="${ride.rideCount}">Null</c:out></td>
         </tr>
     </c:forEach>
