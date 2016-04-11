@@ -34,8 +34,6 @@ public class LogoutServlet extends HttpServlet {
 
 		request.setAttribute("loginPageMsg", "Logout successful.");
 
-		request.getSession().setAttribute("loginPageMsg", "Logout successful.");
-
 		request.getRequestDispatcher("/WEB-INF/portal-pages/login.jsp").include(request, response);
 	}
 
