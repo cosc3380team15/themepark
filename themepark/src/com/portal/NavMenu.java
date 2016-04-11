@@ -15,6 +15,7 @@ public class NavMenu {
 			sectionLink = "/Portal/HumanResources";
 			links.add(new NavMenuLink("NEW EMPLOYEE", "/Portal/NewEmployee"));
 			links.add(new NavMenuLink("MANAGE EMPLOYEES", "/Portal/ManageEmployees"));
+			links.add(new NavMenuLink("MANAGE DEPARTMENTS", "/Portal/ManageDepartments"));
 		} else if (department.equalsIgnoreCase("OPERATIONS")) {
 			sectionLink = "/Portal/Operations";
 			links.add(new NavMenuLink("NEW MAINTENANCE TICKET", "/Portal/Operations/NewMaintenanceTicket"));

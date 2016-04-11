@@ -172,10 +172,24 @@ public class DBConnector {
 		return sendReadQueryGetMap("CALL getAllEmployeeInfo();");
 	}
 	
+	public List<Map<String, Object>> getAllDepartmentsInfo() {
+		return sendReadQueryGetMap("SELECT * FROM viewAllDepartmentsInfo;");
+	}
+	
 	public Map<String, Object> getSingleEmployeeInfo(int empId) {
 		List<Map<String, Object>> res = sendReadQueryGetMap(String.format("CALL getSingleEmployeeInfo(%d);", empId));
 		
 		return res.get(0);
+	}
+	
+	public Map<String, Object> getDepartmentManagerByDeptId(int deptId) {
+		List<Map<String, Object>> res = sendReadQueryGetMap(String.format("CALL getDepartmentManagerByDeptId(%d);", deptId));
+		
+		return res.get(0);
+	}
+	
+	public List<Map<String, Object>> getDepartmentEmployeesById(int deptId) {
+		return sendReadQueryGetMap(String.format("CALL getDepartmentEmployeesById(%d);", deptId));
 	}
 	
 	public int addNewEmployee(String deptName, String fName, String lName, String address, String phone, String city, String state, String zip, String dobMonth, String dobDay, String dobYear) {
@@ -221,6 +235,10 @@ public class DBConnector {
 		int resultInt = sendUpdateQuery(query);
 		
 		return resultInt;
+	}
+	
+	public int changeDepartmentManager(int deptId, int empId) {
+		return sendUpdateQuery(String.format("CALL changeDepartmentManager(%d, %d);", deptId, empId));
 	}
 	
 }

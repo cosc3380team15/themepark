@@ -49,7 +49,7 @@ public class ManageEmployeesServlet extends HttpServlet {
 			request.setAttribute("monthList", customUtils.monthList);
 			request.setAttribute("deptNamesList", deptNamesList);
 			request.setAttribute("empRecPhoneFormatted",
-					customUtils.phoneUnformattedToFormatted(empRecord.get("phone").toString()));
+			customUtils.phoneUnformattedToFormatted(empRecord.get("phone").toString()));
 			
 			request.getRequestDispatcher("/WEB-INF/portal-pages/view-employee.jsp").forward(request, response);
 		} else {
