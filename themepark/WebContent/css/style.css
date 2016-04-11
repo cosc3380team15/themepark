@@ -9,7 +9,9 @@ html, body {
 	background-color: #FFF;
 }
 
-article, header, footer {
+article,
+header,
+footer {
 	display: block;
 }
 
@@ -72,7 +74,7 @@ button, input, optgroup, select, textarea {
 #login-box {
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 20%;
+	margin-top: 10%;
 	padding: 20px 15px 20px 15px;
 	width: 300px;
 	height: 200px;
@@ -92,7 +94,6 @@ button, input, optgroup, select, textarea {
 	margin-right: -15px;
 	margin-left: -15px;
 	clear: both;
-	
 }
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
@@ -143,6 +144,72 @@ button, input, optgroup, select, textarea {
   .col-1 {
     width: 8.33333333%;
   }
+}
+
+.submitButtonColumn {
+	margin-top: 25px;
+}
+
+table {
+	width: 100%;
+}
+
+th,
+td {
+	text-align: left;
+	padding: 8px;
+}
+
+th {
+	font-weight: bold;
+  	border-bottom: 2px solid #ddd;
+}
+
+td {
+	border-top: 1px solid #ddd;
+}
+
+tr:hover {
+	background-color: #f5f5f5;
+}
+
+.messageBox {
+	color:#555;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px 10px 5px 10px;
+    margin-top: 25px;
+    margin-right: auto;
+  	margin-left: auto;
+	background:#e3f7fc;
+	border:1px solid #8ed9f6;
+	display: inline-block;
+}
+
+div > span {
+	width: 100%;
+}
+
+.white-panel-look {
+	background-color: #FFF !important;
+	border: 1px solid #000 !important;
+	border-radius: 5px !important;
+}
+
+.white-panel-box {
+	background-color: #FFF;
+	border: 1px solid #000;
+	width: 100%;
+	padding: 8px;
+	border-radius: 5px;
+}
+
+h4 {
+	font-weight: normal;
+	font-size: 18px;
+	font-family: inherit;
+	margin: 5px 0 5px 0;
+	padding: 0;
 }
 
 nav {

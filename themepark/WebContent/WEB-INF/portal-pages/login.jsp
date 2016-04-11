@@ -25,22 +25,21 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-12">
+					<div class="col-12 submitButtonColumn">
 						<input class="button" type="submit" value="Login"/>
 					</div>
 				</div>
 			</div>
 		</form>
-		<div class="row">
-			<div class="col-12">
-				<c:if test="${sessionScope.loginPageMsg != null}">
-					<c:out value="${sessionScope.loginPageMsg}"/>
-				</c:if>
-				<c:if test="${sessionScope.loginPageMsg == null}">
-					<c:out value=""/>
-				</c:if>
+		<c:if test="${loginPageMsg != null}">
+			<div class="row">
+				<div class="col-12">
+					<span class="messageBox">
+						<c:out value="${loginPageMsg}"/>
+					</span>
+				</div>
 			</div>
-		</div>
+		</c:if>
 	</div>
 </body>
 </html>

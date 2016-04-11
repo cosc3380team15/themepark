@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 			
 			response.sendRedirect("/themepark/Portal");
 		} else {
-			//session.setAttribute("loginPageMsg", "Incorrect username or password.");
+			request.setAttribute("loginPageMsg", "Incorrect username or password.");
 			request.getRequestDispatcher("/WEB-INF/portal-pages/login.jsp").include(request, response);
 			
 		}
