@@ -87,7 +87,7 @@ public class DBConnector {
 	}
 	
 	public void insertEmployee(String first, String last, String dept, String address, String phone, String city, String state, String zip, Date dob, Date hire, String pw) {
-		sendReadQuery("CALL insertEmployee(dept,first,last,address,phone,city,state,zip,dob,hire,pw);");
+		sendReadQuery("CALL insertEmployee('Information Technology','"+first+"','"+last+"','"+address+"','"+phone+"','"+city+"','"+state+"','"+zip+"','"+dob+"','"+hire+"','"+pw+"');");
 	}
 	
 	public void insertMaintenanceLog(String name, String type, java.sql.Timestamp start, java.sql.Timestamp end, String problem, String resolution) {

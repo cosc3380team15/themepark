@@ -1,5 +1,3 @@
-<<<<<<< .merge_file_a11012
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -35,7 +33,7 @@
 		</div>
 		<div class="col-3">
 			<label for="phoneNumber">Phone number</label>
-			<input type="tel" name="phoneNumber" placeholder="ex: 595-555-5555" required pattern="\d{3}[\-]\d{3}[\-]\d{4}"/>
+			<input type="tel" name="phoneNumber" placeholder="ex: 5955555555" required pattern="\d{3}\d{3}\d{4}"/>
 		</div>
 	</div>
 	<div class="row">
@@ -85,4 +83,3 @@
 		</div>
 	</div>
 </form>
->>>>>>> .merge_file_a03408

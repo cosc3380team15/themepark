@@ -11,7 +11,7 @@
 <h2>Ride log for the past 30 days</h2>
 <table class="statTable">
 	<tr class="statTH">
-		<td>Activity ID</td>
+		<td>Activity Log ID</td>
 		<td>Ride Name</td>
 		<td>Ride ID</td>
 		<td>Date</td>
