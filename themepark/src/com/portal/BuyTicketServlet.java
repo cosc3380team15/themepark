@@ -28,8 +28,9 @@ public class BuyTicketServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DBConnector conn = new DBConnector();
 		
-		request.getRequestDispatcher("/WEB-INF/BuyTicket.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/BuyTicket.jsp").forward(request, response);
 	}
 
 	/**

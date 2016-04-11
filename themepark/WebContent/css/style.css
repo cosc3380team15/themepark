@@ -125,8 +125,6 @@ img.responsive-400 {
 }
 
 .row {
-	margin-right: -15px;
-	margin-left: -15px;
 	clear: both;
 }
 
@@ -174,6 +172,10 @@ img.responsive-400 {
     width: 63.327%;
   }
   
+  .col-8-fill {
+  	min-width: 63.327%;
+  }
+  
   .col-7,
   .col-7-end {
     width: 55.4135%;
@@ -182,6 +184,10 @@ img.responsive-400 {
   .col-6,
   .col-6-end {
     width: 47.5%;
+  }
+  
+  .col-6-fill {
+  	min-width: 47.5%;
   }
   
   .col-5,
@@ -383,7 +389,7 @@ nav #drop-nav li ul li {
 /***************/
 
 form.clean-look {
-    padding: 5px;
+    
     font: 12px Arial, Helvetica, sans-serif;
     color: #666;
 }
@@ -401,7 +407,7 @@ form.clean-look select {
     color: #555;
     height: 30px;
     line-height: 15px;
-    width: 100%;
+    width: 95%;
     padding: 0px 0px 0px 10px;
     margin-top: 2px;
     border: 1px solid #E5E5E5;
@@ -433,7 +439,7 @@ form.clean-look select {
    -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
-    width:100%;
+    width:95%;
     height:30px;
 }
 

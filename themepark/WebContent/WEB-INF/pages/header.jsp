@@ -13,6 +13,6 @@
 		<li><a href="/themepark/Rides.jsp">Rides</a></li>
 		<li><a href="/themepark/HoursDirections.jsp">Hours & Directions</a></li>
 		<li><a href="/themepark/Pictures.jsp">Pictures</a></li>
-		<li><a href="/themepark/BuyTicket.jsp">Buy Tickets</a></li>
+		<li><a href="/themepark/BuyTicket">Buy Tickets</a></li>
 	</ul>
 </nav>
