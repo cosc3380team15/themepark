@@ -1,6 +1,8 @@
 package com.portal;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +31,9 @@ public class BuyTicketServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnector conn = new DBConnector();
+		List<Object[]> ticketPriceInfo = conn.getTicketPriceAndTypeInfo();
+		
+		request.setAttribute("ticketPriceInfo", ticketPriceInfo);
 		
 		request.getRequestDispatcher("/WEB-INF/pages/BuyTicket.jsp").forward(request, response);
 	}
@@ -39,37 +44,21 @@ public class BuyTicketServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnector conn = new DBConnector();
 		int resultInt = conn.insertOnlineSale(
-				"One-day", // edit this later
+				request.getParameter("ticketTypeId"),
 				request.getParameter("first"),
 				request.getParameter("last"),
 				request.getParameter("email"),
-				"", // add phone number later
-				Integer.parseInt(request.getParameter("oneday")),
-				35.00*(Integer.parseInt(request.getParameter("oneday"))) // must change later
+				request.getParameter("phone"),
+				request.getParameter("ticketCount")
 				);
 		
 		if (resultInt >= 1) {
-			request.setAttribute("buyTicketMsg", "Successfully bought tickets.");
-			request.getRequestDispatcher("/WEB-INF/pages/viewPurchase.jsp").forward(request, response);
+			request.setAttribute("buyTicketMsg", "Successfully purchased tickets.");
 		} else {
 			request.setAttribute("buyTicketMsg", "Failed to buy tickets.");
 		}
-		request.getRequestDispatcher("/WEB-INF/BuyTicket.jsp").forward(request, response);
-		/*
-		resultInt = 
-				conn.insertOnlineSale(
-					"Seasonal",
-					request.getParameter("first"),
-					request.getParameter("last"),
-					request.getParameter("email"),
-					"", // add phone number later
-					Integer.parseInt(request.getParameter("seasonal")),
-					300.00*(Integer.parseInt(request.getParameter("seasonal")))
-				);
-				*/
-		
+		request.getRequestDispatcher("/WEB-INF/pages/BuyTicket.jsp").forward(request, response);
 
-		
 	}
 
 }

@@ -241,23 +241,26 @@ public class DBConnector {
 		return sendUpdateQuery(String.format("CALL changeDepartmentManager(%d, %d);", deptId, empId));
 	}
 	
-	public int insertOnlineSale(String type, String first, String last, String email, String phone, int totalPurchased, double totalPrice) {
+	public int insertOnlineSale(String typeId, String first, String last, String email, String phone, String totalPurchased) {
 		java.util.Date today = Calendar.getInstance().getTime();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
-		String query = String.format("CALL insertOnlineSale('%s', '%s', '%s', '%s', '%s', '%s', %d, %f);",
-				type,
+		String query = String.format("CALL insertOnlineSale(%d, '%s', '%s', '%s', '%s', '%s', %d);",
+				Integer.parseInt(typeId),
 				formatter.format(today),
 				first,
 				last,
 				email,
-				phone,
-				totalPurchased,
-				totalPrice
+				phone.replaceAll("-", ""),
+				Integer.parseInt(totalPurchased)
 				);
 		
 		int resultInt = sendUpdateQuery(query);
 		return resultInt;
+	}
+	
+	public List<Object[]> getTicketPriceAndTypeInfo() {
+		return sendReadQuery("SELECT * FROM ticket_price;");
 	}
 	
 	/*
