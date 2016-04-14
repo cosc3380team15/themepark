@@ -14,23 +14,21 @@
 				background-image: url("../themepark/images/red-bubbles-background.jpg") !important;
 				background-repeat: repeat;
 			}
-			a.employee-portal { 
-				color: #FFF !important;
-			}
-			a.employee-portal:hover { color: #FACE21 !important; }
 		</style>
 	</head>
 	<body>
-		<jsp:include page="/WEB-INF/pages/header.jsp"></jsp:include>
+		<header>
+			<jsp:include page="/WEB-INF/pages/header.jsp"/>
+		</header>
 		
-		<div class="container-80" style="background-color: #F3F3F3; min-height: 500px;">
-			<jsp:include page="/WEB-INF/pages/${param.content}.jsp"></jsp:include>
+		<div class="container container-body">
+			<jsp:include page="/WEB-INF/pages/${param.content}.jsp"/>
 		</div>
 	</body>
 	<hr>
 	<footer>
-		<div class="container-80" style="background-color: #F3F3F3;">
-			<jsp:include page="/WEB-INF/pages/footer.jsp"></jsp:include>
+		<div class="container" style="background-color: #F3F3F3;">
+			<jsp:include page="/WEB-INF/pages/footer.jsp"/>
 		</div>
 	</footer>
 </html>
