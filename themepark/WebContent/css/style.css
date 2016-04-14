@@ -33,6 +33,12 @@ a.employee-portal {
 	color: #FFF !important;
 }
 
+a.employee-portal:active,
+a.employee-portal:hover {
+  	outline: 0;
+  	color: #FACE21;
+}
+
 small {
   	font-size: 80%;
 }
@@ -154,6 +160,8 @@ header .clearfix {
 		width: 1170px;
 		padding-right: 15px;
 		padding-left: 15px;
+		padding-top: 15px;
+		padding-bottom: 15px;
 		margin-right: auto;
 		margin-left: auto;
   	}
@@ -270,6 +278,26 @@ tr:hover {
 
 .large-heading {
 	font-size: 2em;
+}
+
+.panel-white {
+	background-color: #FFF;
+	border: 2px solid #000 !important;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+.panel-white .panel-heading {
+	display: block;
+	margin: 8px auto 0 auto;
+	text-align: center;
+	font-size: 1.6em;
+}
+
+.panel-white .panel-body {
+	display: block;
+	margin: 8px 5px 8px 5px;
 }
 
 h4 {
