@@ -176,6 +176,10 @@ public class DBConnector {
 		return sendReadQueryGetMap("SELECT * FROM viewAllDepartmentsInfo;");
 	}
 	
+	public List<Map<String, Object>> getAttendance() {
+		return sendReadQueryGetMap("SELECT * FROM attendance;");
+	}
+	
 	public Map<String, Object> getSingleEmployeeInfo(int empId) {
 		List<Map<String, Object>> res = sendReadQueryGetMap(String.format("CALL getSingleEmployeeInfo(%d);", empId));
 		
