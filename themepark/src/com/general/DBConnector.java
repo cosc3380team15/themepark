@@ -180,6 +180,10 @@ public class DBConnector {
 		return sendReadQueryGetMap("SELECT * FROM attendance;");
 	}
 	
+	public List<Map<String, Object>> getMaintenance() {
+		return sendReadQueryGetMap("SELECT * FROM maintenanceLog;");
+	}
+	
 	public Map<String, Object> getSingleEmployeeInfo(int empId) {
 		List<Map<String, Object>> res = sendReadQueryGetMap(String.format("CALL getSingleEmployeeInfo(%d);", empId));
 		
