@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<table>
+<table class="clean-look">
 	<tr>
 		<th>Date</th>
-		<th>Attendance</th>
+		<th>Attendance Count</th>
 	</tr>
 	<c:forEach var="count" items="${attendance}">
 		<tr>
