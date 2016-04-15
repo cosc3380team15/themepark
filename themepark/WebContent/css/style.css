@@ -1,6 +1,7 @@
 @CHARSET "ISO-8859-1";
 
-html, body {
+html,
+body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
@@ -30,7 +31,7 @@ a:hover {
 }
 
 a.employee-portal {
-	color: #FFF !important;
+	color: #FFF;
 }
 
 a.employee-portal:active,
@@ -49,17 +50,6 @@ hr {
 	-webkit-box-sizing: content-box;
    	-moz-box-sizing: content-box;
 	box-sizing: content-box;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-	display: inline-block;
-  margin: 0;
-  font: inherit;
-  color: inherit;
 }
 
 ul.blank-style {
@@ -102,10 +92,10 @@ img.large-pic {
 	margin-right: auto;
 	margin-top: 10%;
 	padding: 20px 15px 20px 15px;
-	width: 300px;
-	height: 200px;
+	width: 330px;
+	height: auto;
 	background-color: #FACE21;
-	border: 1px solid #404040;
+	border: 2px solid #404040;
 }
 
 #logout-container {
@@ -140,12 +130,12 @@ img.large-pic {
 	margin-bottom: 15px;
 }
 
-header .logo {
+header .left-float {
 	float: left;
 	text-align: left;
 }
 
-header .employee-portal-link {
+header .right-float {
 	float: right;
 	text-align: right;
 }
@@ -161,14 +151,15 @@ header .clearfix {
 		padding-right: 15px;
 		padding-left: 15px;
 		padding-top: 15px;
-		padding-bottom: 15px;
+		padding-bottom: 30px;
 		margin-right: auto;
 		margin-left: auto;
   	}
   
   	.container-body {
   		min-height: 500px;
-  		background-color: #F3F3F3;
+  		/*background-color: #F3F3F3;*/
+  		border: 2px solid #404040;
   	}
 }
 
@@ -389,7 +380,7 @@ nav #drop-nav li ul li {
 /***************/
 
 form.clean-look {
-    font: 14px Arial, Helvetica, sans-serif;
+    font: normal 16px/16px Arial, Helvetica, sans-serif;
     color: #666;
 }
 
@@ -404,19 +395,26 @@ form.clean-look .col {
 form.clean-look label {
     display: block;
     margin: 0px 0px 5px;
-    min-width: 95%;
+}
+
+form.clean-look button,
+form.clean-look input,
+form.clean-look optgroup,
+form.clean-look select,
+form.clean-look textarea {
+	display: inline-block;
 }
 
 form.clean-look input[type="text"],
 form.clean-look input[type="tel"],
 form.clean-look input[type="email"],
+form.clean-look input[type="password"],
 form.clean-look textarea,
 form.clean-look select {
     color: #555;
-    min-height: 30px;
     min-width: 270px;
     line-height: 15px;
-    padding: 5px 0px 5px 10px;
+    padding: 5px 22px 5px 10px;
     border: 1px solid #E5E5E5;
     border-radius: 5px;
     background: #FBFBFB;
@@ -424,27 +422,14 @@ form.clean-look select {
     -webkit-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
     -moz-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
     box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
-    font: normal 16px/16px Arial, Helvetica, sans-serif;
+    font: inherit;
 }
 
-form.clean-look input[type="text"]:focus,
-form.clean-look input[type="tel"]:focus,
-form.clean-look input[type="email"]:focus,
-form.clean-look textarea:focus,
-form.clean-look select:focus {
-	border-color: #00F;
-}
-
-form.clean-look input[type="text"]:invalid,
-form.clean-look input[type="tel"]:invalid,
-form.clean-look input[type="email"]:invalid,
-form.clean-look textarea:invalid,
-form.clean-look select:invalid {
-	border-color: #800;	
-}
-
-form.clean-look textarea {
-    height:100px;
+form.clean-look input[type="text"],
+form.clean-look input[type="tel"],
+form.clean-look input[type="email"],
+form.clean-look input[type="password"] {
+	height: 30px;
 }
 
 form.clean-look select {
@@ -455,22 +440,77 @@ form.clean-look select {
    	-moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
-    height:30px;
+    height: 40px;
+    min-width: 302px;
+}
+
+form.clean-look input[type="text"]:focus,
+form.clean-look input[type="tel"]:focus,
+form.clean-look input[type="email"]:focus,
+form.clean-look input[type="password"]:focus,
+form.clean-look textarea:focus,
+form.clean-look select:focus {
+	border-color: #00F;
+}
+
+form.clean-look input[type="text"]:invalid,
+form.clean-look input[type="tel"]:invalid,
+form.clean-look input[type="email"]:invalid,
+form.clean-look input[type="password"]:invalid,
+form.clean-look textarea:invalid,
+form.clean-look select:invalid {
+	border-color: #E5E5E5;	
+}
+
+form.clean-look input[type="text"]:invalid,
+form.clean-look input[type="tel"]:invalid,
+form.clean-look input[type="email"]:invalid,
+form.clean-look input[type="password"]:invalid {
+	background-image: url("../images/exclamation.png");
+	background-position: right center;
+	background-size: auto;
+	background-repeat: no-repeat;
+}
+
+form.clean-look textarea {
+    height:100px;
 }
 
 form .button {
-    background-color: #598ae6;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-border-radius: 5px;
-    border: none;
-    padding: 10px 25px 10px 25px;
-    color: #FFF;
-    text-shadow: 1px 1px 1px #949494;
+    border: 1px solid #df0909;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-family: comic sans, comic sans ms, cursive, verdana, arial, sans-serif;
+    padding: 10px 15px 10px 15px;
+    text-decoration: none;
+    display: inline-block;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #FFFFFF;
+	background-color: #f62b2b;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f62b2b), to(#d20202));
+	background-image: -webkit-linear-gradient(top, #f62b2b, #d20202);
+	background-image: -moz-linear-gradient(top, #f62b2b, #d20202);
+	background-image: -ms-linear-gradient(top, #f62b2b, #d20202);
+	background-image: linear-gradient(to bottom, #f62b2b, #d20202);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f62b2b, endColorstr=#d20202);
 }
 
 form .button:hover {
-    background-color: #255ec7;
+	border: 1px solid #b30808;
+	background-color: #e40a0a;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e40a0a), to(#9f0202));
+	background-image: -webkit-linear-gradient(top, #e40a0a, #9f0202);
+	background-image: -moz-linear-gradient(top, #e40a0a, #9f0202);
+	background-image: -ms-linear-gradient(top, #e40a0a, #9f0202);
+	background-image: linear-gradient(to bottom, #e40a0a, #9f0202);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e40a0a, endColorstr=#9f0202);
+}
+
+form .center-form {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .statTable {

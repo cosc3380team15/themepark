@@ -10,9 +10,9 @@
 		
 		<!-- Style tag which will override small, default customizations of style.css -->
 		<style type="text/css">
-			body {
+			body {/*
 				background-image: url("../themepark/images/red-bubbles-background.jpg") !important;
-				background-repeat: repeat;
+				background-repeat: repeat;*/
 			}
 		</style>
 	</head>

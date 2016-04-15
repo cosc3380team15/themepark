@@ -10,39 +10,37 @@
 </head>
 <body>
 	<div id="login-box">
-		<form method="POST" action="Login">
+		<form class="clean-look center-form" method="POST" action="Login">
 			<div class="row">
-				<div class="col-10">
+				<div class="col">
 					<label for="user">Username</label>
 					<input type="text" name="user"/>
 				</div>
-				<div class="col-2"></div>
 			</div>
+			
 			<div class="row">
-				<div class="col-10">
+				<div class="col">
 					<label for="pwd">Password</label>
 					<input type="password" name="pwd"/>
 				</div>
-				<div class="col-2"></div>
 			</div>
+			
 			<div class="row">
-				<div class="col-10 submitButtonColumn">
+				<div class="col submitButtonColumn">
 					<input class="button" type="submit" value="Login"/>
 				</div>
-				<div class="col-2"></div>
 			</div>
-			<div class="row">
-				<c:if test="${loginPageMsg != null}">
-						<div class="col-10">
-							<span class="messageBox">
-								<c:out value="${loginPageMsg}"/>
-							</span>
-						</div>
-						<div class="col-2"></div>
-				</c:if>
-			</div>
+			
+			<c:if test="${loginPageMsg != null}">
+				<div class="row">
+					<div class="col">
+						<span class="messageBox">
+							<c:out value="${loginPageMsg}"/>
+						</span>
+					</div>
+				</div>
+			</c:if>
 		</form>
-		<div class="row"></div>
 	</div>
 </body>
 </html>
