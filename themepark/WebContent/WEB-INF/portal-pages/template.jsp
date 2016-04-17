@@ -8,19 +8,19 @@
 		<title>${param.title}</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 	</head>
-	<body>
+	<body class="red-background">
 		<header>
 			<jsp:include page="/WEB-INF/portal-pages/header.jsp"/>
 		</header>
 		
-		<div class="container container-body">
+		<div class="container container-body yellow-background">
 			<jsp:include page="/WEB-INF/portal-pages/${param.content}.jsp"/>
 		</div>
+		<hr>
+		<footer>
+			<div class="container">
+				<jsp:include page="/WEB-INF/portal-pages/footer.jsp"/>
+			</div>
+		</footer>
 	</body>
-	<hr>
-	<footer>
-		<div class="container">
-			<jsp:include page="/WEB-INF/portal-pages/footer.jsp"/>
-		</div>
-	</footer>
 </html>

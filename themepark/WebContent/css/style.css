@@ -158,8 +158,7 @@ header .clearfix {
   
   	.container-body {
   		min-height: 500px;
-  		/*background-color: #F3F3F3;*/
-  		border: 2px solid #404040;
+  		border: 2px solid #000;
   	}
 }
 
@@ -176,6 +175,14 @@ header .clearfix {
   	margin-left: 5px;
   	margin-right: 5px;
   }
+}
+
+.red-background {
+	background-color: #CC2828;
+}
+
+.yellow-background {
+	background-color: #FACE21;
 }
 
 .submitButtonColumn {
@@ -279,14 +286,14 @@ tr:hover {
 	-webkit-border-radius: 10px;
 }
 
-.panel-white .panel-heading {
+.panel-white > .panel-heading {
 	display: block;
 	margin: 8px auto 0 auto;
 	text-align: center;
 	font-size: 1.6em;
 }
 
-.panel-white .panel-body {
+.panel-white > .panel-body {
 	display: block;
 	margin: 8px 5px 8px 5px;
 }
@@ -305,11 +312,9 @@ nav {
 	text-align: left;
 	background-color: #FACE21;
 	width: 100%;
-	margin: 10px 0 20px 0;
+	margin: 0px 0 10px 0;
 	display: inline-block;
-	border-width: 1px;
-	border-color: #000;
-	border-style: solid;
+	border: 2px solid #000;
 }
 
 nav div.nav-wrapper {
@@ -432,6 +437,15 @@ form.clean-look input[type="password"] {
 	height: 30px;
 }
 
+form.clean-look textarea {
+    height: 100px;
+}
+
+form.clean-look textarea.larger-box {
+	width: 500px;
+	height: 300px;
+}
+
 form.clean-look select {
     background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%); 
     background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
@@ -470,10 +484,6 @@ form.clean-look input[type="password"]:invalid {
 	background-position: right center;
 	background-size: auto;
 	background-repeat: no-repeat;
-}
-
-form.clean-look textarea {
-    height:100px;
 }
 
 form .button {

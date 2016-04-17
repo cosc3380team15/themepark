@@ -278,6 +278,14 @@ public class DBConnector {
 				);
 	}
 	
+	public List<Map<String, Object>> getAllMaintenanceTypes() {
+		return sendReadQueryGetMap("CALL getAllMaintenanceTypes();");
+	}
+	
+	public List<Map<String, Object>> getAllRideNames() {
+		return sendReadQueryGetMap("CALL getAllRideNames();");
+	}
+	
 	/*
 	
 	public void insertDailyRideLog(String name, Date day, int count) {
