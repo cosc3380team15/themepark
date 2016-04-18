@@ -39,8 +39,23 @@ public class NewMaintenanceTicketServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		DBConnector conn = new DBConnector();
+
+		int resultInt = conn.insertRideMaintenanceTicket(
+				Integer.parseInt(request.getParameter("ride")),
+				Integer.parseInt(request.getParameter("maintenanceType")),
+				Integer.parseInt(request.getSession().getAttribute("userId").toString()),
+				request.getParameter("problem").toString(),
+				(request.getParameter("resolution") == null) ? null : request.getParameter("resolution").toString() 
+			);
+		
+		if (resultInt >= 1) { // Ticket successfully added. Redirect to view all maintenance tickets.
+			response.sendRedirect("/themepark/Portal/ManageMaintenanceTickets");
+		} else {
+			request.setAttribute("newMaintTicketMsg", "Failed to create maintenance ticket.");
+			
+			doGet(request, response);
+		}
 	}
 
 }

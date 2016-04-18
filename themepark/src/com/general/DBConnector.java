@@ -286,6 +286,37 @@ public class DBConnector {
 		return sendReadQueryGetMap("CALL getAllRideNames();");
 	}
 	
+	public int insertRideMaintenanceTicket(int rideId, int rideMaintTypeId, int empId, String probDesc, String resDesc) {
+		String query;
+		
+		if (resDesc == null) {
+			query = String.format("CALL insertMaintenanceTicket(%d, %d, %d, %s);",
+					rideId,
+					rideMaintTypeId,
+					empId,
+					probDesc);
+		} else if (resDesc.replaceAll(" ", "") == "") {
+			query = String.format("CALL insertMaintenanceTicket(%d, %d, %d, %s);",
+					rideId,
+					rideMaintTypeId,
+					empId,
+					probDesc);
+		} else {
+			query = String.format("CALL insertMaintenanceTicketWithResolution(%d, %d, %d, %s, %s);",
+					rideId,
+					rideMaintTypeId,
+					empId,
+					probDesc,
+					resDesc);
+		}
+		
+		return sendUpdateQuery(query);
+	}
+	
+	public List<Map<String, Object>> getAllMaintenanceTickets() {
+		return sendReadQueryGetMap("SELECT * FROM viewMaintenanceTickets;");
+	}
+	
 	/*
 	
 	public void insertDailyRideLog(String name, Date day, int count) {

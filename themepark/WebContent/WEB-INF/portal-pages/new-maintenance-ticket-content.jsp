@@ -8,7 +8,7 @@
 	</div>
 </div>
 
-<form class="clean-look" method="POST" action="Portal/NewMaintenanceTicket">
+<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/NewMaintenanceTicket">
 	<div class="row">
 		<div class="col">
 			<label for="maintenanceType">Maintenance type</label>
@@ -52,3 +52,11 @@
 		</div>
 	</div>
 </form>
+
+<c:if test="${not empty newMaintTicketMsg}">
+	<div class="row">
+		<div class="col messageBox">
+			<c:out value="${newMaintTicketMsg}"/>
+		</div>
+	</div>
+</c:if>

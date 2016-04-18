@@ -62,8 +62,9 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession(); // Create the session variable.
 		
 		if (results.size() > 0) {
-			session.setAttribute("user", String.format("%s %s", results.get(0)[0].toString(), results.get(0)[1].toString()));
-			session.setAttribute("dept", results.get(0)[2].toString());
+			session.setAttribute("userId", results.get(0)[0]); // Set from emp_id field.
+			session.setAttribute("user", String.format("%s %s",	results.get(0)[1], results.get(0)[2])); // Set from first_name and last_name fields.
+			session.setAttribute("dept", results.get(0)[3]); // Set from department field.
 			session.setAttribute("navItems", navigationItems);
 			session.setMaxInactiveInterval(30 * 60); // Set session expiration time to 30 minutes.
 			

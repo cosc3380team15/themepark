@@ -19,8 +19,7 @@ public class NavMenu {
 		} else if (department.equalsIgnoreCase("OPERATIONS")) {
 			sectionLink = "/Portal/Operations";
 			links.add(new NavMenuLink("NEW MAINTENANCE TICKET", "/Portal/NewMaintenanceTicket"));
-			links.add(new NavMenuLink("EXISTING MAINTENANCE TICKETS", "/Portal/ExistingMaintenanceTickets"));
-			links.add(new NavMenuLink("COMPLETED MAINTENANCE TICKETS", "/Portal/CompletedMaintenanceTickets"));
+			links.add(new NavMenuLink("MANAGE MAINTENANCE TICKETS", "/Portal/ManageMaintenanceTickets"));
 		} else if (department.equalsIgnoreCase("STATISTICS")) {
 			sectionLink = "/Portal/Statistics";
 			links.add(new NavMenuLink("RIDES", "/Portal/Statistics/Rides"));
