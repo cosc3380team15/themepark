@@ -290,19 +290,19 @@ public class DBConnector {
 		String query;
 		
 		if (resDesc == null) {
-			query = String.format("CALL insertMaintenanceTicket(%d, %d, %d, %s);",
+			query = String.format("CALL insertMaintenanceTicket(%d, %d, %d, '%s');",
 					rideId,
 					rideMaintTypeId,
 					empId,
 					probDesc);
 		} else if (resDesc.replaceAll(" ", "") == "") {
-			query = String.format("CALL insertMaintenanceTicket(%d, %d, %d, %s);",
+			query = String.format("CALL insertMaintenanceTicket(%d, %d, %d, '%s');",
 					rideId,
 					rideMaintTypeId,
 					empId,
 					probDesc);
 		} else {
-			query = String.format("CALL insertMaintenanceTicketWithResolution(%d, %d, %d, %s, %s);",
+			query = String.format("CALL insertMaintenanceTicketWithResolution(%d, %d, %d, '%s', '%s');",
 					rideId,
 					rideMaintTypeId,
 					empId,

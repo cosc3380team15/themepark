@@ -7,9 +7,14 @@
 	<div class="row">
 		<div class="col">
 			<select name="filterTickets">
-				<option value="all">All</option>
-				<option value="open">Open</option>
-				<option value="closed">Closed</option>
+				<c:forEach var="filt" items="${filterChoices}">
+					<c:if test="${selectedFilter == filt}">
+						<option value="${filt}" selected><c:out value="${filt}"/></option>
+					</c:if>
+					<c:if test="${selectedFilter != filt}">
+						<option value="${filt}"><c:out value="${filt}"/></option>
+					</c:if>
+				</c:forEach>
 			</select>
 		</div>
 		<div class="col">

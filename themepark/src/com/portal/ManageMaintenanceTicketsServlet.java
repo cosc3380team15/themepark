@@ -35,21 +35,42 @@ public class ManageMaintenanceTicketsServlet extends HttpServlet {
 		DBConnector conn = new DBConnector();
 		
 		List<Map<String, Object>> results = conn.getAllMaintenanceTickets();
-		Object filter = request.getAttribute("filterTickets");
+		String[] filterChoices = { "All", "Open", "Closed" };
 		
-		if (filter == null) {
+		request.setAttribute("maintenanceTickets", results);
+		request.setAttribute("filterChoices", filterChoices);
+		request.setAttribute("selectedFilter", "All"); // Default option.
+		
+		request.getRequestDispatcher("/WEB-INF/portal-pages/manage-maintenance-tickets.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DBConnector conn = new DBConnector();
+		
+		List<Map<String, Object>> results = conn.getAllMaintenanceTickets();
+		String[] filterChoices = { "All", "Open", "Closed" };
+		
+		String filterDropDownChoice = request.getParameter("filterTickets");
+		
+		request.setAttribute("filterChoices", filterChoices);
+		request.setAttribute("selectedFilter", filterDropDownChoice); // Set to what was selected in the dropdown menu.
+		
+		if (filterDropDownChoice == null) {
 			request.setAttribute("maintenanceTickets", results);
-		} else if (filter.toString().equalsIgnoreCase("all")) {
+		} else if (filterDropDownChoice.equalsIgnoreCase("All")) {
 			request.setAttribute("maintenanceTickets", results);
-		} else if (filter.toString().equalsIgnoreCase("open")) {
+		} else if (filterDropDownChoice.equalsIgnoreCase("Open")) {
 			List<Map<String, Object>> filteredResults = new ArrayList<Map<String, Object>>();
 			for (Map<String, Object> record : results) {
-				if (record.get("Status").toString().equalsIgnoreCase("open")) {
+				if (record.get("Status").toString().equalsIgnoreCase("Open")) {
 					filteredResults.add(record);
 				}
 			}
 			request.setAttribute("maintenanceTickets", filteredResults);
-		} else if (filter.toString().equalsIgnoreCase("closed")) {
+		} else if (filterDropDownChoice.equalsIgnoreCase("Closed")) {
 			List<Map<String, Object>> filteredResults = new ArrayList<Map<String, Object>>();
 			for (Map<String, Object> record : results) {
 				if (record.get("Status").toString().equalsIgnoreCase("closed")) {
@@ -62,14 +83,6 @@ public class ManageMaintenanceTicketsServlet extends HttpServlet {
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/portal-pages/manage-maintenance-tickets.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
