@@ -6,6 +6,6 @@
 </c:if>
 
 <jsp:include page="/WEB-INF/portal-pages/template.jsp">
-	<jsp:param name="content" value="manage-departments-content"/>
-	<jsp:param name="title" value="Duff Gardens Employee Portal - Manage Departments"/>
+	<jsp:param name="content" value="view-maintenance-ticket-content"/>
+	<jsp:param name="title" value="Duff Gardens Employee Portal - View Maintenance Ticket"/>
 </jsp:include>

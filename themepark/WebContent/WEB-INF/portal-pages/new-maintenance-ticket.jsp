@@ -2,7 +2,7 @@
 
 <!-- ONLY ALLOW CONTENT PAST THIS POINT IF A VALID SESSION EXISTS -->
 <c:if test="${sessionScope.user == null}">
-	<c:redirect url="/Login"/>
+	<c:redirect url="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/Login"/>
 </c:if>
 
 <jsp:include page="/WEB-INF/portal-pages/template.jsp">

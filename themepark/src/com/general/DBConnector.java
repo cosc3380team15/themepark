@@ -317,6 +317,12 @@ public class DBConnector {
 		return sendReadQueryGetMap("SELECT * FROM viewMaintenanceTickets;");
 	}
 	
+	public Map<String, Object> getMaintenanceTicketById(int id) {
+		List<Map<String, Object>> results = sendReadQueryGetMap(String.format("SELECT * FROM viewMaintenanceTickets WHERE ID = %d;", id));
+		
+		return results.get(0);
+	}
+	
 	/*
 	
 	public void insertDailyRideLog(String name, Date day, int count) {

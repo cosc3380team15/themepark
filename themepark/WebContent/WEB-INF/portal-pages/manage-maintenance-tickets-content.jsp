@@ -18,7 +18,7 @@
 			</select>
 		</div>
 		<div class="col">
-			<input class="button" type="submit" value="Apply"/>
+			<input class="button" type="submit" value="Apply Filter"/>
 		</div>
 	</div>
 </form>
@@ -38,7 +38,7 @@
 	<c:forEach var="record" items="${maintenanceTickets}">
 		<tr>
 			<td>
-				<c:out value="${record.get('ID')}"/>
+				<a href="?ticketId=${record.get('ID')}"><c:out value="${record.get('ID')}"/></a>
 			</td>
 			<td>
 				<c:out value="${record.get('Created')}"/>

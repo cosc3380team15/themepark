@@ -33,15 +33,25 @@ public class ManageMaintenanceTicketsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnector conn = new DBConnector();
+		String ticketIdParam = request.getParameter("ticketId"); // If not null, then we want to show a single ticket in view-maintenance-ticket page.
 		
-		List<Map<String, Object>> results = conn.getAllMaintenanceTickets();
-		String[] filterChoices = { "All", "Open", "Closed" };
+		if (ticketIdParam == null) {
+			List<Map<String, Object>> results = conn.getAllMaintenanceTickets();
+			String[] filterChoices = { "All", "Open", "Closed" };
+			
+			request.setAttribute("maintenanceTickets", results);
+			request.setAttribute("filterChoices", filterChoices);
+			request.setAttribute("selectedFilter", "All"); // Default option.
+			
+			request.getRequestDispatcher("/WEB-INF/portal-pages/manage-maintenance-tickets.jsp").forward(request, response);
+		} else {
+			Map<String, Object> ticketRecord = conn.getMaintenanceTicketById(Integer.parseInt(ticketIdParam));
+			
+			request.setAttribute("ticketRecord", ticketRecord);
+			
+			request.getRequestDispatcher("/WEB-INF/portal-pages/view-maintenance-ticket.jsp").forward(request, response);
+		}
 		
-		request.setAttribute("maintenanceTickets", results);
-		request.setAttribute("filterChoices", filterChoices);
-		request.setAttribute("selectedFilter", "All"); // Default option.
-		
-		request.getRequestDispatcher("/WEB-INF/portal-pages/manage-maintenance-tickets.jsp").forward(request, response);
 	}
 
 	/**

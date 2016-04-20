@@ -2,9 +2,7 @@
 
 <!-- ONLY ALLOW CONTENT PAST THIS POINT IF A VALID SESSION EXISTS -->
 <c:if test="${sessionScope.user == null}">
-	<jsp:forward page="/Login">
-		<jsp:param name="loginErrorMsg" value="${sessionScope.loginErrorMessage}"/>
-	</jsp:forward>
+	<c:redirect url="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/Login"/>
 </c:if>
 
 <jsp:include page="/WEB-INF/portal-pages/template.jsp">

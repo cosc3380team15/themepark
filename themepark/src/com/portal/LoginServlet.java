@@ -46,26 +46,18 @@ public class LoginServlet extends HttpServlet {
 		// Get login parameters from webpage.
 		String user = request.getParameter("user");
 		String pwd = request.getParameter("pwd");
-		
-		// Temp variable to hold a list of navigation items. This will eventually need to be a list of navigation items
-		// retrieved from a class based on the privileges of the user that is logging in.
-		List<NavMenu> navigationItems = new ArrayList<NavMenu>();
-		navigationItems.add(new NavMenu("human resources"));
-		navigationItems.add(new NavMenu("operations"));
-		navigationItems.add(new NavMenu("statistics"));
-		//String navItems[] = new String[navigationItems.size()];
-		//navItems = navigationItems.toArray(navItems);
-		
+						
 		DBConnector conn = new DBConnector();
 		List<Object[]> results = conn.tryLogin(user, pwd);
 		
 		HttpSession session = request.getSession(); // Create the session variable.
 		
 		if (results.size() > 0) {
+			NavMenu navMenu = new NavMenu(results.get(0)[3].toString()); // Create navigation menu based on department.
 			session.setAttribute("userId", results.get(0)[0]); // Set from emp_id field.
 			session.setAttribute("user", String.format("%s %s",	results.get(0)[1], results.get(0)[2])); // Set from first_name and last_name fields.
 			session.setAttribute("dept", results.get(0)[3]); // Set from department field.
-			session.setAttribute("navItems", navigationItems);
+			session.setAttribute("navMenu", navMenu);
 			session.setMaxInactiveInterval(30 * 60); // Set session expiration time to 30 minutes.
 			
 			response.sendRedirect("/themepark/Portal");
