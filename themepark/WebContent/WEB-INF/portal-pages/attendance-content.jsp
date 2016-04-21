@@ -10,10 +10,10 @@
 	<c:forEach var="count" items="${attendance}">
 		<tr>
 			<td>
-				<c:out value="${count.get('Purchase_Date')}"/>
+				<c:out value="${count.get('Month')}"/>
 			</td>
 			<td>
-				<c:out value="${count.get('Attendance_Count')}"/>
+				<c:out value="${count.get('Average_Attendance')}"/>
 			</td>
 		</tr>
 	</c:forEach>
