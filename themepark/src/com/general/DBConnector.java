@@ -177,7 +177,7 @@ public class DBConnector {
 	}
 	
 	public List<Map<String, Object>> getAttendance() {
-		return sendReadQueryGetMap("SELECT * FROM monthlyAttendance;");
+		return sendReadQueryGetMap("SELECT * FROM avgMonthlyAttendance;");
 	}
 	
 	public List<Map<String, Object>> getMaintenance() {

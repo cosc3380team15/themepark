@@ -13,7 +13,7 @@
 				<c:out value="${count.get('Month')}"/>
 			</td>
 			<td>
-				<c:out value="${count.get('Total_Attendance')}"/>
+				<c:out value="${count.get('Average_Attendance')}"/>
 			</td>
 		</tr>
 	</c:forEach>
