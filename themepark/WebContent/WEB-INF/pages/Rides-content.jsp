@@ -6,7 +6,7 @@
 <div class="row">
 	<div class="col-6 center-text">
 		<article class="center-text"><a href="/themepark/RollerCoasterRide.jsp">Roller Coaster</a></article>
-		<article><img class="responsive-400" src="${pageContext.request.contextPath}/images/RollerCoast.png"></article>
+		<article><img class="responsive-400" src="${pageContext.request.contextPath}/images/RollerCoast.png" WIDTH="400" HEIGHT="400"></article>
 	</div>
 	<div class="col-6 center-text">
 		<article class="center-text"><a href="/themepark/FerrisWheelRide.jsp">Ferris Wheel</a></article>
