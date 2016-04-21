@@ -38,11 +38,11 @@
 	<div class="row">
 		<div class="col">
 			<label for="problem">Problem description</label>
-			<textarea class="larger-box" name="problem"></textarea>
+			<textarea class="larger-box" name="problem" maxlength="1000" required></textarea>
 		</div>
 		<div class="col">
 			<label for="resolution">Resolution description</label>
-			<textarea class="larger-box" name="resolution"></textarea>
+			<textarea class="larger-box" name="resolution" maxlength="1000"></textarea>
 		</div>
 	</div>
 	

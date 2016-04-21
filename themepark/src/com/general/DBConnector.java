@@ -323,6 +323,10 @@ public class DBConnector {
 		return results.get(0);
 	}
 	
+	public int updateMaintenanceTicket(int id, String resolution) {
+		return sendUpdateQuery(String.format("CALL updateMaintenanceTicket(%d, '%s');", id, resolution));
+	}
+	
 	/*
 	
 	public void insertDailyRideLog(String name, Date day, int count) {

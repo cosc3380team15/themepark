@@ -59,40 +59,68 @@ public class ManageMaintenanceTicketsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnector conn = new DBConnector();
+		String updateCalled = request.getParameter("update");
+		int updateCalledInt;
 		
-		List<Map<String, Object>> results = conn.getAllMaintenanceTickets();
-		String[] filterChoices = { "All", "Open", "Closed" };
-		
-		String filterDropDownChoice = request.getParameter("filterTickets");
-		
-		request.setAttribute("filterChoices", filterChoices);
-		request.setAttribute("selectedFilter", filterDropDownChoice); // Set to what was selected in the dropdown menu.
-		
-		if (filterDropDownChoice == null) {
-			request.setAttribute("maintenanceTickets", results);
-		} else if (filterDropDownChoice.equalsIgnoreCase("All")) {
-			request.setAttribute("maintenanceTickets", results);
-		} else if (filterDropDownChoice.equalsIgnoreCase("Open")) {
-			List<Map<String, Object>> filteredResults = new ArrayList<Map<String, Object>>();
-			for (Map<String, Object> record : results) {
-				if (record.get("Status").toString().equalsIgnoreCase("Open")) {
-					filteredResults.add(record);
-				}
-			}
-			request.setAttribute("maintenanceTickets", filteredResults);
-		} else if (filterDropDownChoice.equalsIgnoreCase("Closed")) {
-			List<Map<String, Object>> filteredResults = new ArrayList<Map<String, Object>>();
-			for (Map<String, Object> record : results) {
-				if (record.get("Status").toString().equalsIgnoreCase("closed")) {
-					filteredResults.add(record);
-				}
-			}
-			request.setAttribute("maintenanceTickets", filteredResults);
+		if (updateCalled == null) {
+			updateCalledInt = 0;
 		} else {
-			request.setAttribute("maintenanceTickets", results);
+			updateCalledInt = 1;
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/portal-pages/manage-maintenance-tickets.jsp").forward(request, response);
+		if (updateCalledInt == 0) { // If no update param is found, then it's a filter POST.
+			List<Map<String, Object>> results = conn.getAllMaintenanceTickets();
+			String[] filterChoices = { "All", "Open", "Closed" };
+			
+			String filterDropDownChoice = request.getParameter("filterTickets");
+			
+			request.setAttribute("filterChoices", filterChoices);
+			request.setAttribute("selectedFilter", filterDropDownChoice); // Set to what was selected in the dropdown menu.
+			
+			if (filterDropDownChoice == null) {
+				request.setAttribute("maintenanceTickets", results);
+			} else if (filterDropDownChoice.equalsIgnoreCase("All")) {
+				request.setAttribute("maintenanceTickets", results);
+			} else if (filterDropDownChoice.equalsIgnoreCase("Open")) {
+				List<Map<String, Object>> filteredResults = new ArrayList<Map<String, Object>>();
+				for (Map<String, Object> record : results) {
+					if (record.get("Status").toString().equalsIgnoreCase("Open")) {
+						filteredResults.add(record);
+					}
+				}
+				request.setAttribute("maintenanceTickets", filteredResults);
+			} else if (filterDropDownChoice.equalsIgnoreCase("Closed")) {
+				List<Map<String, Object>> filteredResults = new ArrayList<Map<String, Object>>();
+				for (Map<String, Object> record : results) {
+					if (record.get("Status").toString().equalsIgnoreCase("closed")) {
+						filteredResults.add(record);
+					}
+				}
+				request.setAttribute("maintenanceTickets", filteredResults);
+			} else {
+				request.setAttribute("maintenanceTickets", results);
+			}
+			
+			request.getRequestDispatcher("/WEB-INF/portal-pages/manage-maintenance-tickets.jsp").forward(request, response);
+		} else if (updateCalledInt == 1) { // An update to the maintenance ticket has been called in this POST.
+			String ticketIdParam = request.getParameter("ticketId");
+			String resolutionParam = request.getParameter("resolution");
+			
+			int resultInt = conn.updateMaintenanceTicket(Integer.parseInt(ticketIdParam), resolutionParam);
+			
+			if (resultInt > 0) {
+				request.setAttribute("viewMaintTicketPageMsg", "Ticket successfully updated.");
+				//request.getRequestDispatcher("/WEB-INF/portal-pages/view-maintenance-ticket.jsp").include(request, response);
+				
+			} else {
+				request.setAttribute("viewMaintTicketPageMsg", "Failed to update ticket.");
+				
+				doGet(request, response);
+			}
+			
+		}
+		
+		
 	}
 
 }

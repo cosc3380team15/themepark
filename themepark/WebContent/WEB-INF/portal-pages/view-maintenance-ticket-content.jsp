@@ -39,16 +39,16 @@
 	</tr>
 </table>
 
-<form class="clean-look" method="POST" action="?">
+<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/ManageMaintenanceTickets?update=1">
 	<div class="row">
 		<div class="col">
-			<label for="problem">Problem</label>
-			<textarea class="larger-box" name="problem" read-only><c:out value="${ticketRecord.get('Problem')}"/></textarea>
+			<label for="problem">Problem description</label>
+			<textarea class="larger-box" name="problem" readonly><c:out value="${ticketRecord.get('Problem')}"/></textarea>
 		</div>
 		<div class="col">
-			<label for="resolution">Resolution</label>
+			<label for="resolution">Resolution description</label>
 			<c:if test="${ticketRecord.get('Status') == 'Open'}">
-				<textarea class="larger-box" name="resolution"></textarea>
+				<textarea class="larger-box" name="resolution" maxlength="1000" required></textarea>
 			</c:if>
 			<c:if test="${ticketRecord.get('Status') == 'Closed'}">
 				<textarea class="larger-box" name="resolution" read-only><c:out value="${ticketRecord.get('Resolution')}"/></textarea>
@@ -68,11 +68,11 @@
 	</div>
 </form>
 
-<c:if test="${not empty viewEmployeePageMsg}">
+<c:if test="${not empty viewMaintTicketPageMsg}">
 	<div class="row">
 		<div class="col">
 			<span class="messageBox">
-				<c:out value="${viewEmployeePageMsg}"/>
+				<c:out value="${viewMaintTicketPageMsg}"/>
 			</span>
 		</div>
 	</div>
