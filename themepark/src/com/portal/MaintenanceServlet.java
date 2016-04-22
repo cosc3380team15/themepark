@@ -20,7 +20,7 @@ public class MaintenanceServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnector conn = new DBConnector();
-		request.setAttribute("maintenance", conn.getMaintenance());
+		request.setAttribute("avgMaintenance", conn.getAvgMaintenance());
 		
 		request.getRequestDispatcher("/WEB-INF/portal-pages/maintenance.jsp").forward(request, response);
 	}

@@ -198,6 +198,10 @@ public class DBConnector {
 		return results;
 	}
 	
+	public List<Map<String, Object>> getAvgMaintenance() {
+		return sendReadQueryGetMap("SELECT * FROM avgMonthlyMaintenance;");
+	}
+	
 	public Map<String, Object> getSingleEmployeeInfo(int empId) {
 		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
 
