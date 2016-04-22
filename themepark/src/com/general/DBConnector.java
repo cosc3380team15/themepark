@@ -184,6 +184,10 @@ public class DBConnector {
 		return sendReadQueryGetMap("SELECT * FROM maintenanceLog;");
 	}
 	
+	public List<Map<String, Object>> getAvgMaintenance() {
+		return sendReadQueryGetMap("SELECT * FROM avgMonthlyMaintenance;");
+	}
+	
 	public Map<String, Object> getSingleEmployeeInfo(int empId) {
 		List<Map<String, Object>> res = sendReadQueryGetMap(String.format("CALL getSingleEmployeeInfo(%d);", empId));
 		
