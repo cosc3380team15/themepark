@@ -61,7 +61,7 @@ img16.src = "${pageContext.request.contextPath}/images/sushiRestaurant.jpg"
 
 
 
-function slideshowUp()
+function slideshowForward()
 {
 num=num+1;
 
@@ -96,5 +96,5 @@ document.mypic.src=eval("img"+num+".src")
 
 
 <button onclick="JavaScript:slideshowBack()" >Previous</button>
-  <button onclick="JavaScript:slideshowBack()" >Next</button>
+  <button onclick="JavaScript:slideshowForward()" >Next</button>
 </CENTER>
