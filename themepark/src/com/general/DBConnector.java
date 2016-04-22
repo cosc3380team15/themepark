@@ -199,7 +199,19 @@ public class DBConnector {
 	}
 	
 	public List<Map<String, Object>> getAvgMaintenance() {
-		return sendReadQueryGetMap("SELECT * FROM avgMonthlyMaintenance;");
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM avgMonthlyMaintenance;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public Map<String, Object> getSingleEmployeeInfo(int empId) {
