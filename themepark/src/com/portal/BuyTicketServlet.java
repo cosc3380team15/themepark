@@ -2,6 +2,7 @@ package com.portal;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +32,7 @@ public class BuyTicketServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnector conn = new DBConnector();
-		List<Object[]> ticketPriceInfo = conn.getTicketPriceAndTypeInfo();
+		List<Map<String, Object>> ticketPriceInfo = conn.getTicketPriceAndTypeInfo();
 		
 		request.setAttribute("ticketPriceInfo", ticketPriceInfo);
 		

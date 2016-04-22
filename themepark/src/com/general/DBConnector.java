@@ -15,75 +15,30 @@ public class DBConnector {
 	String url = "jdbc:mysql://cosc3380team15.ddns.net:3306/themeparkdb";
     String user = "dbadmin";
     String password = "Computerscience1";
-
-	private List<Object[]> sendReadQuery(String query) {
-		Connection con = null;
-        Statement st = null;
-        ResultSet rs = null;
-        
-        List<Object[]> records = new ArrayList<Object[]>();
-        
-        try {
+    
+    Connection con = null;
+    ResultSet rs = null;
+    
+    private void openConnection() {
+    	try {
             Class.forName("com.mysql.jdbc.Driver");
         } 
         catch (ClassNotFoundException err) {
         	System.out.println("Class not found error: " + err.getMessage());
         }
-        
-        try {
-            con = DriverManager.getConnection(url, user, password);
-            st = con.createStatement();
-            rs = st.executeQuery(query);
-                        
-            while (rs.next()) {
-            	Object[] record = new Object[rs.getMetaData().getColumnCount()];
-            	
-            	for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-            		record[i - 1] = rs.getObject(i);
-            	}
-            	
-            	records.add(record);
-            }
-        } catch (SQLException err) {
+    	
+    	try {
+    		con = DriverManager.getConnection(url, user, password);
+    	} catch (SQLException err) {
         	System.out.println("Connection error: " + err.getMessage());
-
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (st != null) {
-                    st.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException err) {
-            	System.out.println("Closing error: " + err.getMessage());
-            }
         }
-        
-        return records;
-	}
-	
-	private List<Map<String, Object>> sendReadQueryGetMap(String query) {
-		Connection con = null;
-        Statement st = null;
-        ResultSet rs = null;
-        
+    }
+    
+    private List<Map<String, Object>> sendReadQuery(PreparedStatement ps) {        
         List<Map<String, Object>> records = new ArrayList<Map<String, Object>>();
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } 
-        catch (ClassNotFoundException err) {
-        	System.out.println("Class not found error: " + err.getMessage());
-        }
-        
-        try {
-            con = DriverManager.getConnection(url, user, password);
-            st = con.createStatement();
-            rs = st.executeQuery(query);
+            rs = ps.executeQuery();
                         
             while (rs.next()) {
             	Map<String, Object> row = new HashMap<String, Object>();
@@ -96,14 +51,13 @@ public class DBConnector {
             }
         } catch (SQLException err) {
         	System.out.println("Connection error: " + err.getMessage());
-
-        } finally {
-            try {
+        } finally { // Close connections to DB.
+        	try {
                 if (rs != null) {
                     rs.close();
                 }
-                if (st != null) {
-                    st.close();
+                if (ps != null) {
+                    ps.close();
                 }
                 if (con != null) {
                     con.close();
@@ -116,32 +70,20 @@ public class DBConnector {
         return records;
 	}
 	
-	private int sendUpdateQuery(String query) {
-		Connection con = null;
-        Statement st = null;
+	private int sendUpdateQuery(PreparedStatement ps) {
         int resultInt = 0;
         
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } 
-        catch (ClassNotFoundException err) {
-        	System.out.println("Class not found error: " + err.getMessage());
-        }
-        
-        try {
-            con = DriverManager.getConnection(url, user, password);
-            st = con.createStatement();
-            
-            resultInt = st.executeUpdate(query); // Returns 0 for fail, 1 or more for success and rows affected.
-                        
-            
+        try {            
+            resultInt = ps.executeUpdate(); // Returns 0 for fail, 1 or more for success and rows affected.
         } catch (SQLException err) {
         	System.out.println("Connection error: " + err.getMessage());
-
-        } finally {
-            try {
-                if (st != null) {
-                    st.close();
+        } finally { // Close connections to DB.
+        	try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
                 }
                 if (con != null) {
                     con.close();
@@ -154,50 +96,161 @@ public class DBConnector {
         return resultInt;
 	}
 	
-	public List<Object[]> tryLogin(String username, String password) {
-		return sendReadQuery(String.format("CALL tryLogin('%s', '%s');", username, password));
+	public Map<String, Object> tryLogin(String username, String password) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL tryLogin(?, ?);");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			
+			results = sendReadQuery(ps);
+
+			return (results.size() > 0) ? results.get(0) : new HashMap<String, Object>();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return new HashMap<String, Object>();
 	}
 	
 	public List<String> getAllDepartmentNames() {
-		List<Object[]> results = sendReadQuery("CALL getAllDepartmentNames();");
-		List<String> deptNamesList = new ArrayList<String>();
-		for (Object[] row : results) {
-			deptNamesList.add(row[0].toString());
+		List<String> results = new ArrayList<String>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getAllDepartmentNames();");
+			
+			for (Map<String, Object> m : sendReadQuery(ps)) {
+				results.add(m.get("name").toString());
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		
-		return deptNamesList;
+		return results;
 	}
 	
 	public List<Map<String, Object>> getAllEmployeeInfo() {
-		return sendReadQueryGetMap("CALL getAllEmployeeInfo();");
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getAllEmployeeInfo();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public List<Map<String, Object>> getAllDepartmentsInfo() {
-		return sendReadQueryGetMap("SELECT * FROM viewAllDepartmentsInfo;");
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewAllDepartmentsInfo;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public List<Map<String, Object>> getAttendance() {
-		return sendReadQueryGetMap("SELECT * FROM avgMonthlyAttendance;");
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM avgMonthlyAttendance;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public List<Map<String, Object>> getMaintenance() {
-		return sendReadQueryGetMap("SELECT * FROM maintenanceLog;");
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM maintenanceLog;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public Map<String, Object> getSingleEmployeeInfo(int empId) {
-		List<Map<String, Object>> res = sendReadQueryGetMap(String.format("CALL getSingleEmployeeInfo(%d);", empId));
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getSingleEmployeeInfo(?);");
+			ps.setInt(1, empId);
+			
+			results = sendReadQuery(ps);
+			
+			return (results.size() > 0) ? results.get(0) : new HashMap<String, Object>();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		return res.get(0);
+		return new HashMap<String, Object>();
 	}
 	
 	public Map<String, Object> getDepartmentManagerByDeptId(int deptId) {
-		List<Map<String, Object>> res = sendReadQueryGetMap(String.format("CALL getDepartmentManagerByDeptId(%d);", deptId));
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getDepartmentManagerByDeptId(?);");
+			ps.setInt(1, deptId);
+			
+			results = sendReadQuery(ps);
+			
+			return (results.size() > 0) ? results.get(0) : new HashMap<String, Object>();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		return res.get(0);
+		return new HashMap<String, Object>();
 	}
 	
 	public List<Map<String, Object>> getDepartmentEmployeesById(int deptId) {
-		return sendReadQueryGetMap(String.format("CALL getDepartmentEmployeesById(%d);", deptId));
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getDepartmentEmployeesById(?);");
+			ps.setInt(1, deptId);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public int addNewEmployee(String deptName, String fName, String lName, String address, String phone, String city, String state, String zip, String dobMonth, String dobDay, String dobYear) {
@@ -206,125 +259,259 @@ public class DBConnector {
 	 
 	    // (2) create a date "formatter" (the date format we want)
 	    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		
-		String query = String.format("CALL insertEmployee('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
-				deptName,
-				fName,
-				lName,
-				address,
-				phone.replaceAll("-", ""), // Remove dashes from string.
-				city,
-				state,
-				zip,
-				dobYear + "-" + dobMonth + "-" + dobDay,
-				formatter.format(today), // Today's date.
-				"password" // Default password for every new hire.
-		);
-		
-		int resultInt = sendUpdateQuery(query);
+	    
+	    int resultInt = 0;
+	    
+	    try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL insertEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+			ps.setString(1, deptName);
+			ps.setString(2, fName);
+			ps.setString(3, lName);
+			ps.setString(4, address);
+			ps.setString(5, phone.replaceAll("-", "")); // Remove dashes from string.
+			ps.setString(6, city);
+			ps.setString(7, state);
+			ps.setString(8, zip);
+			ps.setString(9, dobYear + "-" + dobMonth + "-" + dobDay);
+			ps.setString(10, formatter.format(today));
+			ps.setString(11, "password");
+			
+			resultInt = sendUpdateQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		return resultInt;
 	}
 	
 	public int updateEmployee(int empId, String deptName, String fName, String lName, String address, String phone, String city, String state, String zip, String dobMonth, String dobDay, String dobYear) {
-		String query = String.format("CALL updateEmployeeInfo(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
-				empId,
-				deptName,
-				fName,
-				lName,
-				address,
-				phone.replaceAll("-", ""), // Remove dashes from string.
-				city,
-				state,
-				zip,
-				dobYear + "-" + dobMonth + "-" + dobDay
-		);
-		
-		int resultInt = sendUpdateQuery(query);
+		int resultInt = 0;
+	    
+	    try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL updateEmployeeInfo(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+			ps.setInt(1, empId);
+			ps.setString(2, deptName);
+			ps.setString(3, fName);
+			ps.setString(4, lName);
+			ps.setString(5, address);
+			ps.setString(6, phone.replaceAll("-", "")); // Remove dashes from string.
+			ps.setString(7, city);
+			ps.setString(8, state);
+			ps.setString(9, zip);
+			ps.setString(10, dobYear + "-" + dobMonth + "-" + dobDay);
+			
+			resultInt = sendUpdateQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		return resultInt;
 	}
 	
 	public int changeDepartmentManager(int deptId, int empId) {
-		return sendUpdateQuery(String.format("CALL changeDepartmentManager(%d, %d);", deptId, empId));
+		int resultInt = 0;
+	    
+	    try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL changeDepartmentManager(?, ?);");
+			ps.setInt(1, deptId);
+			ps.setInt(2, empId);
+			
+			resultInt = sendUpdateQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return resultInt;
 	}
 	
 	public int insertOnlineSale(String typeId, String first, String last, String email, String phone, String totalPurchased) {
 		java.util.Date today = Calendar.getInstance().getTime();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
-		String query = String.format("CALL insertOnlineSale(%d, '%s', '%s', '%s', '%s', '%s', %d);",
-				Integer.parseInt(typeId),
-				formatter.format(today),
-				first,
-				last,
-				email,
-				phone.replaceAll("-", ""),
-				Integer.parseInt(totalPurchased)
-				);
+		int resultInt = 0;
+	    
+	    try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL insertOnlineSale(?, ?, ?, ?, ?, ?, ?);");
+			ps.setInt(1, Integer.parseInt(typeId));
+			ps.setString(2, formatter.format(today));
+			ps.setString(3, first);
+			ps.setString(4, last);
+			ps.setString(5, email);
+			ps.setString(6, phone.replaceAll("-", ""));
+			ps.setInt(7, Integer.parseInt(totalPurchased));
+			
+			resultInt = sendUpdateQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		int resultInt = sendUpdateQuery(query);
 		return resultInt;
 	}
 	
-	public List<Object[]> getTicketPriceAndTypeInfo() {
-		return sendReadQuery("SELECT * FROM ticket_price;");
+	public List<Map<String, Object>> getTicketPriceAndTypeInfo() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM ticket_price;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public List<Map<String, Object>> getOnlinePurchaseHistory(String email, String phone) {
-		return sendReadQueryGetMap(String.format("CALL getOnlinePurchaseHistory('%s', '%s');",
-				email,
-				phone.replaceAll("-", ""))
-				);
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getOnlinePurchaseHistory(?, ?);");
+			ps.setString(1, email);
+			ps.setString(2, phone.replaceAll("-", ""));
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public List<Map<String, Object>> getAllMaintenanceTypes() {
-		return sendReadQueryGetMap("CALL getAllMaintenanceTypes();");
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getAllMaintenanceTypes();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public List<Map<String, Object>> getAllRideNames() {
-		return sendReadQueryGetMap("CALL getAllRideNames();");
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getAllRideNames();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public int insertRideMaintenanceTicket(int rideId, int rideMaintTypeId, int empId, String probDesc, String resDesc) {
-		String query;
-		
-		if (resDesc == null) {
-			query = String.format("CALL insertMaintenanceTicket(%d, %d, %d, '%s');",
-					rideId,
-					rideMaintTypeId,
-					empId,
-					probDesc);
-		} else if (resDesc.replaceAll(" ", "") == "") {
-			query = String.format("CALL insertMaintenanceTicket(%d, %d, %d, '%s');",
-					rideId,
-					rideMaintTypeId,
-					empId,
-					probDesc);
-		} else {
-			query = String.format("CALL insertMaintenanceTicketWithResolution(%d, %d, %d, '%s', '%s');",
-					rideId,
-					rideMaintTypeId,
-					empId,
-					probDesc,
-					resDesc);
+		int resultInt = 0;
+	    
+	    try {
+			openConnection();
+			
+			if (resDesc == null) {
+				PreparedStatement ps = con.prepareStatement("CALL insertMaintenanceTicket(?, ?, ?, ?);");
+				ps.setInt(1, rideId);
+				ps.setInt(2, rideMaintTypeId);
+				ps.setInt(3, empId);
+				ps.setString(4, probDesc);
+
+				resultInt = sendUpdateQuery(ps);
+			} else if (resDesc.replaceAll(" ", "") == "") {
+				PreparedStatement ps = con.prepareStatement("CALL insertMaintenanceTicket(?, ?, ?, ?);");
+				ps.setInt(1, rideId);
+				ps.setInt(2, rideMaintTypeId);
+				ps.setInt(3, empId);
+				ps.setString(4, probDesc);
+
+				resultInt = sendUpdateQuery(ps);
+			} else {
+				PreparedStatement ps = con.prepareStatement("CALL insertMaintenanceTicketWithResolution(?, ?, ?, ?, ?);");
+				ps.setInt(1, rideId);
+				ps.setInt(2, rideMaintTypeId);
+				ps.setInt(3, empId);
+				ps.setString(4, probDesc);
+				ps.setString(5, resDesc);
+
+				resultInt = sendUpdateQuery(ps);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		
-		return sendUpdateQuery(query);
+		return resultInt;
 	}
 	
 	public List<Map<String, Object>> getAllMaintenanceTickets() {
-		return sendReadQueryGetMap("SELECT * FROM viewMaintenanceTickets;");
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewMaintenanceTickets;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
 	}
 	
 	public Map<String, Object> getMaintenanceTicketById(int id) {
-		List<Map<String, Object>> results = sendReadQueryGetMap(String.format("SELECT * FROM viewMaintenanceTickets WHERE ID = %d;", id));
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewMaintenanceTickets WHERE ID = ?;");
+			ps.setInt(1, id);
+			
+			results = sendReadQuery(ps);
+			
+			return (results.size() > 0) ? results.get(0) : new HashMap<String, Object>();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		return results.get(0);
+		return new HashMap<String, Object>();
 	}
 	
 	public int updateMaintenanceTicket(int id, String resolution) {
-		return sendUpdateQuery(String.format("CALL updateMaintenanceTicket(%d, '%s');", id, resolution));
+		int resultInt = 0;
+	    
+	    try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL updateMaintenanceTicket(?, ?);");
+			ps.setInt(1, id);
+			ps.setString(2, resolution);
+			
+			resultInt = sendUpdateQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return resultInt;
 	}
 	
 	/*

@@ -36,8 +36,8 @@
 			<label for="ticketTypeId">Ticket type:</label>
 			<select name="ticketTypeId" required>
 				<c:forEach var="record" items="${ticketPriceInfo}">
-					<option value="${record[0]}">
-						<c:out value="${record[1]}"/>
+					<option value="${record.get('ticket_price_id')}">
+						<c:out value="${record.get('type')}"/>
 					</option>
 				</c:forEach>
 			</select>

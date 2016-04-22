@@ -3,6 +3,7 @@ package com.portal;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,15 +49,15 @@ public class LoginServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 						
 		DBConnector conn = new DBConnector();
-		List<Object[]> results = conn.tryLogin(user, pwd);
+		Map<String, Object> results = conn.tryLogin(user, pwd);
 		
 		HttpSession session = request.getSession(); // Create the session variable.
 		
 		if (results.size() > 0) {
-			NavMenu navMenu = new NavMenu(results.get(0)[3].toString()); // Create navigation menu based on department.
-			session.setAttribute("userId", results.get(0)[0]); // Set from emp_id field.
-			session.setAttribute("user", String.format("%s %s",	results.get(0)[1], results.get(0)[2])); // Set from first_name and last_name fields.
-			session.setAttribute("dept", results.get(0)[3]); // Set from department field.
+			NavMenu navMenu = new NavMenu(results.get("department_name").toString()); // Create navigation menu based on department.
+			session.setAttribute("userId", results.get("emp_id")); // Set from emp_id field.
+			session.setAttribute("user", String.format("%s %s",	results.get("first_name"), results.get("last_name"))); // Set from first_name and last_name fields.
+			session.setAttribute("dept", results.get("department_name")); // Set from department field.
 			session.setAttribute("navMenu", navMenu);
 			session.setMaxInactiveInterval(30 * 60); // Set session expiration time to 30 minutes.
 			
@@ -64,7 +65,6 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			request.setAttribute("loginPageMsg", "Incorrect username or password.");
 			request.getRequestDispatcher("/WEB-INF/portal-pages/login.jsp").include(request, response);
-			
 		}
 	}
 
