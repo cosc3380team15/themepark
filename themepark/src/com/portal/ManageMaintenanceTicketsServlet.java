@@ -110,14 +110,10 @@ public class ManageMaintenanceTicketsServlet extends HttpServlet {
 			
 			if (resultInt > 0) {
 				request.setAttribute("viewMaintTicketPageMsg", "Ticket successfully updated.");
-				//request.getRequestDispatcher("/WEB-INF/portal-pages/view-maintenance-ticket.jsp").include(request, response);
-				
 			} else {
 				request.setAttribute("viewMaintTicketPageMsg", "Failed to update ticket.");
-				
-				doGet(request, response);
 			}
-			
+			doGet(request, response);
 		}
 		
 		

@@ -39,7 +39,7 @@
 	</tr>
 </table>
 
-<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/ManageMaintenanceTickets?update=1">
+<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/ManageMaintenanceTickets?update=1&ticketId=${ticketRecord.get('ID')}">
 	<div class="row">
 		<div class="col">
 			<label for="problem">Problem description</label>
