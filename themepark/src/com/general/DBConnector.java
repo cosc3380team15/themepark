@@ -530,6 +530,70 @@ public class DBConnector {
 		return resultInt;
 	}
 	
+	public List<Map<String, Object>> viewMaintenanceTicketStats() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewMaintenanceTicketStats;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> getMinorMaintTicketRankings() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getMinorMaintTicketRankings();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> getMajorMaintTicketRankings() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getMajorMaintTicketRankings();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewAvgMaintBreakdownTicketsPerMonth() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewAvgMaintBreakdownTicketsPerMonth;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
 	/*
 	
 	public void insertDailyRideLog(String name, Date day, int count) {
