@@ -13,8 +13,8 @@ import com.sun.xml.internal.ws.client.SenderException;
 
 public class DBConnector {
 	String url = "jdbc:mysql://cosc3380team15.ddns.net:3306/themeparkdb";
-    String user = "dbadmin";
-    String password = "Computerscience1";
+    String user = "webuser";
+    String password = "tretA&etam3k";
     
     Connection con = null;
     ResultSet rs = null;
@@ -585,6 +585,139 @@ public class DBConnector {
 			openConnection();
 			
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewAvgMaintBreakdownTicketsPerMonth;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewRideActivity(String year) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewRideActivity WHERE Year = ?;");
+			ps.setString(1, year);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewRideActivityYearly(String year) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewRideActivityYearly WHERE Year = ?;");
+			ps.setString(1, year);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewRideActivityYearlyAll() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewRideActivityYearly;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewRideClosuresAll() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewRideClosures;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewRideClosures(String year) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewRideClosures WHERE Year = ?;");
+			ps.setString(1, year);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> getAllWeatherConditions() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT name FROM weather_condition;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewRideClosuresYearlyStats(String year) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewRideClosuresYearlyStats WHERE Year = ?;");
+			ps.setString(1, year);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewRideClosuresPerRide(String year) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewRideClosuresPerRide WHERE Year = ?;");
+			ps.setString(1, year);
 			
 			results = sendReadQuery(ps);
 		} catch (SQLException e) {

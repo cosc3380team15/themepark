@@ -8,7 +8,7 @@
 		<title>${param.title}</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 	</head>
-	<body class="red-background">
+	<body class="wavy-red-background">
 		<header>
 			<jsp:include page="/WEB-INF/portal-pages/header.jsp"/>
 		</header>

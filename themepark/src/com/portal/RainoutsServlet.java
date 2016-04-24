@@ -1,7 +1,6 @@
 package com.portal;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,50 +13,61 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.general.CustomUtils;
 import com.general.DBConnector;
-import com.general.RideDAO;
 
-import models.Ride;
-
-@WebServlet("/Portal/Statistics/Rides")
-public class RidesServlet extends HttpServlet {
+/**
+ * Servlet implementation class RainoutsServlet
+ */
+@WebServlet("/Portal/Statistics/Rainouts")
+public class RainoutsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    public RidesServlet() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RainoutsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnector conn = new DBConnector();
 		CustomUtils cu = new CustomUtils();
 		
-		List<String> rides = new ArrayList<String>();
-		for (Map<String, Object> m : conn.getAllRideNames()) {
-			rides.add(m.get("name").toString());
+		List<String> weatherConditions = new ArrayList<String>();
+		for (Map<String, Object> m : conn.getAllWeatherConditions()) {
+			weatherConditions.add(m.get("name").toString());
 		}
+		
+		List<String> distinctYears = getDistinctYears(conn.viewRideClosuresAll());
 		
 		String filterYear = request.getParameter("selFilterYear");
 		
 		if (filterYear == null) {
-			filterYear = "2016";
+			filterYear = distinctYears.get(0);
 		}
 		
 		request.setAttribute("filterYear", filterYear);
-		request.setAttribute("dropDownYears", getDistinctYears(conn.viewRideActivityYearlyAll()));
+		request.setAttribute("dropDownYears", distinctYears);
 		request.setAttribute("monthList", cu.monthList);
-		request.setAttribute("ridesList", rides);
-		request.setAttribute("viewRideActivity", conn.viewRideActivity(filterYear));
-		request.setAttribute("viewRideActivityYearly", conn.viewRideActivityYearly(filterYear));
+		request.setAttribute("weatherConditions", weatherConditions);
+		request.setAttribute("viewRideClosures", conn.viewRideClosures(filterYear));
+		request.setAttribute("viewRideClosuresYearlyStats", conn.viewRideClosuresYearlyStats(filterYear));
+		request.setAttribute("viewRideClosuresPerRide", conn.viewRideClosuresPerRide(filterYear));
 		
-		request.getRequestDispatcher("/WEB-INF/portal-pages/rides.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/portal-pages/rainouts.jsp").forward(request, response);
 	}
 
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
 	private List<String> getDistinctYears(List<Map<String, Object>> values) {
 		List<String> results = new ArrayList<String>();
 		
@@ -69,4 +79,5 @@ public class RidesServlet extends HttpServlet {
 		
 		return results;
 	}
+
 }

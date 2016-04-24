@@ -177,8 +177,13 @@ header .clearfix {
   }
 }
 
+.wavy-red-background {
+	background: url('../images/wavy-red-background.jpg') no-repeat top left;
+}
+
 .red-background {
-	background-color: #CC2828;
+	/*background-color: #CC2828;*/
+	
 }
 
 .yellow-background {

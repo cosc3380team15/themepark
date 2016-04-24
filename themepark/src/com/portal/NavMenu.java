@@ -64,6 +64,7 @@ public class NavMenu {
 	private void addStatisticsSection() {
 		NavSection ns = new NavSection("STATISTICS");
 		ns.links.add(new NavMenuLink("RIDES", "/Portal/Statistics/Rides"));
+		ns.links.add(new NavMenuLink("RAINOUTS", "/Portal/Statistics/Rainouts"));
 		ns.links.add(new NavMenuLink("ATTENDANCE", "/Portal/Statistics/Attendance"));
 		ns.links.add(new NavMenuLink("MAINTENANCE", "/Portal/Statistics/Maintenance"));
 		sections.add(ns);
