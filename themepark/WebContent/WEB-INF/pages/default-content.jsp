@@ -15,9 +15,9 @@
 		<div class="panel-body">
 			<span><img class="medium-pic" src="${pageContext.request.contextPath}/images/rides.png"></span>
 			<ul class="blank-style">
-				<li><a href="/themepark/RiverRide.jsp">River Ride</a></li>
-				<li><a href="/themepark/FerrisWheelRide.jsp">Ferris Wheel</a></li>
-				<li><a href="/themepark/RollerCoasterRide.jsp">Roller Coaster</a></li>
+				<li><a href="/themepark/RiverRide.jsp">Booze River Ride</a></li>
+				<li><a href="/themepark/FerrisWheelRide.jsp">Wheel O' Love</a></li>
+				<li><a href="/themepark/RollerCoasterRide.jsp">Duff Man Coaster</a></li>
 			</ul>
 		</div>
 	</div>

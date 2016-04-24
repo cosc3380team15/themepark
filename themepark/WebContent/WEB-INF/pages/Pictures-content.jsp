@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<h2>TO BE FILLED IN</h2>
+<h2>Duff Garden's Slideshow</h2>
 
 
 
@@ -97,4 +97,7 @@ document.mypic.src=eval("img"+num+".src")
 
 <button onclick="JavaScript:slideshowBack()" >Previous</button>
   <button onclick="JavaScript:slideshowForward()" >Next</button>
+
+
+<h5>Submit More Photos to PhotoSubmission@Duff.com</h5>
 </CENTER>

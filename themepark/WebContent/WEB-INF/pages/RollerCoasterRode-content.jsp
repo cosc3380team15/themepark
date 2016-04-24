@@ -7,8 +7,8 @@
 
 
 
-<h2>The Hops Coaster!</h2>
-<h3> <small>Will You Survive?</small></h3>
+<h2>Duff man Coaster</h2>
+<h3> <small>Go at the speed of Duff Man!</small></h3>
 
 
 

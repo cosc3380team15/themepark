@@ -15,7 +15,7 @@
 		<ul id="drop-nav">
 			<li><a href="/themepark/Activities.jsp">Activities</a></li>
 			<li><a href="/themepark/Rides.jsp">Rides</a></li>
-			<li><a href="/themepark/HoursDirections.jsp">Hours & Directions</a></li>
+			<li><a href="/themepark/HoursDirections.jsp">Hours & Map</a></li>
 			<li><a href="/themepark/Pictures.jsp">Pictures</a></li>
 			<li><a href="/themepark/BuyTicket">Buy Tickets</a></li>
 		</ul>
