@@ -2,11 +2,11 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
-<h2>Duff Garden's Slideshow</h2>
-
-
-
+<div class="row small-margin-below">
+	<div class="col">
+		<span class="large-heading">Duff Gardens Slideshow</span>
+	</div>
+</div>
 	
 	<SCRIPT >
 
@@ -89,15 +89,18 @@ document.mypic.src=eval("img"+num+".src")
 <!-- The Image and Form Codes are Below --> 
 
 <CENTER>
-<IMG SRC= "${pageContext.request.contextPath}/images/FerrisWheel.png" NAME="mypic" BORDER=0 WIDTH="400" HEIGHT="400">
-<p>
 
-
-
-
-<button onclick="JavaScript:slideshowBack()" >Previous</button>
-  <button onclick="JavaScript:slideshowForward()" >Next</button>
-
+<div class="row">
+	<div class="col" style="height: 400px;">
+		<button style="vertical-align: middle;" onclick="JavaScript:slideshowBack()" >Previous</button>	
+	</div>
+	<div class="col">
+		<IMG SRC= "${pageContext.request.contextPath}/images/FerrisWheel.png" NAME="mypic" BORDER=0 WIDTH="500" HEIGHT="400">
+	</div>
+	<div class="col" style="height: 400px;">
+		<button style="vertical-align: middle;" onclick="JavaScript:slideshowForward()" >Next</button>
+	</div>
+</div>
 
 <h5>Submit More Photos to PhotoSubmission@Duff.com</h5>
 </CENTER>

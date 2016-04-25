@@ -1,14 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="container">
-	<div class="row">
-		<div class="left-float">
-			<img class="img-responsive" src="${pageContext.request.contextPath}/images/duff-gardens-logo-emp.png">
+<div class="red-background" style="width: 100%;">
+	<div class="container">
+		<div class="row">
+			<div class="left-float">
+				<img class="img-responsive" src="${pageContext.request.contextPath}/images/duff-gardens-logo-emp.png">
+			</div>
+			<div class="right-float">
+				<c:out value="${sessionScope.user}"/> | <a class="employee-portal" href="${pageContext.request.contextPath}/Portal/ChangePassword">Change Password</a> | <a class="employee-portal" href="${pageContext.request.contextPath}/Logout">Logout</a>
+			</div>
+			<div class="clearfix"></div>
 		</div>
-		<div class="right-float">
-			<c:out value="${sessionScope.user}"/> | <a class="employee-portal" href="${pageContext.request.contextPath}/Portal/ChangePassword">Change Password</a> | <a class="employee-portal" href="${pageContext.request.contextPath}/Logout">Logout</a>
-		</div>
-		<div class="clearfix"></div>
 	</div>
 </div>
 

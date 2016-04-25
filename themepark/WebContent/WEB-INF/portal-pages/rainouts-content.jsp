@@ -5,10 +5,12 @@
 
 <div class="row">
 	<div class="col">
-		<span class="medium-heading">Rainouts | <small>Report</small></span>
+		<span class="large-heading">Rainouts | <small>Report</small></span>
 	</div>
 </div>
 
+<div class="row">
+<div class="col" style="width: 800px;">
 <form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/Statistics/Rainouts">
 	<div class="row">
 		<div class="col">
@@ -28,9 +30,26 @@
 		</div>
 	</div>
 </form>
+</div>
+<div class="col" style="width: 325px;">
+		<div class="panel-white">
+			<div class="panel-heading">Quick Stats<hr style="width: 95%;"></div>
+			<div class="panel-body">
+				<span class="small-heading">Year</span>
+				<span><c:out value="${filterYear}"/></span>
+				<span class="small-heading small-margin-above">Highest cause for closures</span>
+				<span><c:out value="${viewRideClosuresYearlyStats.get(0).get('Weather Condition')}"></c:out></span>
+				<span class="small-heading small-margin-above">Top 3 ride closures</span>
+				<c:forEach var="x" begin="0" end="2">
+					<span><c:out value="${not empty viewRideClosuresPerRide[x].get('Ride') ? viewRideClosuresPerRide[x].get('Ride') : '-'}"/></span>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="row">
-	<div class="col" style="width: 800px;">
+	<div class="col" style="width: 98%;">
 		<table class="clean-look">
 			<tr>
 				<th></th>
@@ -55,19 +74,5 @@
 				</tr>
 			</c:forEach>
 		</table>
-	</div>
-	<div class="col" style="width: 325px;">
-		<div class="panel-white">
-			<div class="panel-body">
-				<span class="small-heading">Year</span>
-				<span><c:out value="${filterYear}"/></span>
-				<span class="small-heading small-margin-above">Highest cause for closures</span>
-				<span><c:out value="${viewRideClosuresYearlyStats.get(0).get('Weather Condition')}"></c:out></span>
-				<span class="small-heading small-margin-above">Top 3 ride closures</span>
-				<c:forEach var="x" begin="0" end="2">
-					<span><c:out value="${not empty viewRideClosuresPerRide[x].get('Ride') ? viewRideClosuresPerRide[x].get('Ride') : '-'}"/></span>
-				</c:forEach>
-			</div>
-		</div>
 	</div>
 </div>

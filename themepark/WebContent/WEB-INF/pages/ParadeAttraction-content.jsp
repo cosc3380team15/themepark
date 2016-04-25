@@ -4,24 +4,24 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
-
-
-<h2>The Keg Parade</h2>
-<h3> <small>BYOB</small></h3>
-
-
-
-<div align="center"> 
-				<img class="img-responsive" alt="Bart Balloon" src="${pageContext.request.contextPath}/images/BartFloat.jpeg" width="400" height="400"  >
-
-<ul>
-<li>Noon every Monday! </li>
-<li>Bring Your Children Early to Help Blow Up the Baloons!</li> 
-<li>A Baker's Dozen Baloons, and Seven Floats!</li>
-<li>Now Hiring Professional Balloon Carriers, or Fat People</li>
-</ul>
-
+<div class="row small-margin-below">
+	<div class="col">
+		<span class="large-heading">The Keg Parade</span>
+		<span class="small-heading">BYOB</span>
+	</div>
 </div>
-			
+
+<div class="row">
+	<div class="col">
+		<img class="very-large-pic" alt="Bart Balloon" src="${pageContext.request.contextPath}/images/BartFloat.jpeg">
+	</div>
+	<div class="col">
+		<ul>
+			<li>Noon every Monday! </li>
+			<li>Bring Your Children Early to Help Blow Up the Balloons!</li> 
+			<li>A Baker's Dozen Balloons, and Seven Floats!</li>
+			<li>Now Hiring Professional Balloon Carriers, or Fat People</li>
+		</ul>
+	</div>
+</div>
 	

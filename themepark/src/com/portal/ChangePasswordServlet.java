@@ -47,7 +47,7 @@ public class ChangePasswordServlet extends HttpServlet {
 			String newPwConfirm = request.getParameter("newPwConfirm");
 			
 			if (newPw.equals(newPwConfirm)) {
-				if (conn.changeEmployeePassword(empId, currentPw, newPwConfirm) > 0) {
+				if (conn.changeEmployeePassword(empId, newPwConfirm) > 0) {
 					request.setAttribute("changePwMsg", "Your password has been successfully changed!");
 				} else {
 					request.setAttribute("changePwMsg", "Failed to change password.");

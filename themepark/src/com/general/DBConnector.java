@@ -862,16 +862,15 @@ public class DBConnector {
 		return results;
 	}
 	
-	public int changeEmployeePassword(int empId, String oldPw, String newPw) {
+	public int changeEmployeePassword(int empId, String newPw) {
 		int resultInt = 0;
 	    
 	    try {
 			openConnection();
 			
-			PreparedStatement ps = con.prepareStatement("CALL changeEmployeePassword(?, ?, ?);");
+			PreparedStatement ps = con.prepareStatement("CALL changeEmployeePassword(?, ?);");
 			ps.setInt(1, empId);
-			ps.setString(2, oldPw);
-			ps.setString(3, newPw);
+			ps.setString(2, newPw);
 			
 			resultInt = sendUpdateQuery(ps);
 		} catch (SQLException e) {

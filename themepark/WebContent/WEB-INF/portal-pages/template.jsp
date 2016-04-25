@@ -9,11 +9,11 @@
 		<title>${param.title}</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 	</head>
-	<header class="red-background">
+	<header>
 		<jsp:include page="/WEB-INF/portal-pages/header.jsp"/>
 	</header>
 	<body class="wavy-red-background">
-		<div class="container container-body yellow-background">
+		<div class="container container-body yellow-background small-margin-above">
 			<jsp:include page="/WEB-INF/portal-pages/${param.content}.jsp"/>
 		</div>
 	</body>
