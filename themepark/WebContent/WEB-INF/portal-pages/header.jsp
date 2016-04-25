@@ -3,7 +3,10 @@
 <div class="container">
 	<div class="row">
 		<div class="left-float">
-			<div class="large-heading">logo here</div>
+			<img class="img-responsive" src="${pageContext.request.contextPath}/images/duff-gardens-logo-emp.png">
+			
+			
+			<!--   <div class="large-heading">logo here</div> -->
 		</div>
 		<div class="right-float">
 			<c:out value="${sessionScope.user}"/> | <a href="${pageContext.request.contextPath}/Logout">Logout</a>

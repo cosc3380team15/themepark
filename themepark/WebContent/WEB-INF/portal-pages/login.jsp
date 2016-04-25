@@ -9,6 +9,8 @@
 <title>Employee Portal Login</title>
 </head>
 <body>
+<div align = "right"><span style = "background-color: #8ed9f6"><a href="/themepark">Back To Duff Gardens</a></span></div>
+
 	<div id="login-box">
 		<form class="clean-look center-form" method="POST" action="Login">
 			<div class="row">

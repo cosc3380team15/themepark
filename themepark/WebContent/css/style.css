@@ -231,6 +231,10 @@ table.invisible-table td {
 table.invisible-table tr:hover {
 	background-color: inherit;
 }
+ul {
+	list-style-type: circle;
+	list-style-position: inside;
+}
 
 .messageBox {
 	color:#555;
