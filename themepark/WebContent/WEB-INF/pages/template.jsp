@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head class="red-background">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/Favicon.ico"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>${param.title}</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
