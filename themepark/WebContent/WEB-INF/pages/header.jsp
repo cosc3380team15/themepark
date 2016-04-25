@@ -1,12 +1,14 @@
-<div class="container">
-	<div class="row">
-		<div class="left-float">
-			<a href="/themepark"><img src="${pageContext.request.contextPath}/images/duff-gardens-logo.png" /></a>
+<div class="red-background" style="width: 100%;">
+	<div class="container">
+		<div class="row">
+			<div class="left-float">
+				<a href="/themepark"><img src="${pageContext.request.contextPath}/images/duff-gardens-logo.png" /></a>
+			</div>
+			<div class="right-float">
+				<a href="/themepark/Portal" class="employee-portal">Employee Portal</a>
+			</div>
+			<div class="clearfix"></div>
 		</div>
-		<div class="right-float">
-			<a href="/themepark/Portal" class="employee-portal">Employee Portal</a>
-		</div>
-		<div class="clearfix"></div>
 	</div>
 </div>
 

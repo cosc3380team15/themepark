@@ -3,21 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-	<head class="red-background">
-	<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/Favicon.ico"/>
+	<head>
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/Favicon.ico"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>${param.title}</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
-		
-		<!-- Style tag which will override small, default customizations of style.css -->
-		<style type="text/css">
-			body {/*
-				background-image: url("../themepark/images/red-bubbles-background.jpg") !important;
-				background-repeat: repeat;*/
-			}
-		</style>
 	</head>
-	<header class="red-background">
+	<header>
 		<jsp:include page="/WEB-INF/pages/header.jsp"/>
 	</header>
 	<body class="wavy-red-background">
@@ -25,7 +17,6 @@
 			<jsp:include page="/WEB-INF/pages/${param.content}.jsp"/>
 		</div>
 	</body>
-	
 	<footer class="red-background">
 		<hr>
 		<div class="container yellow-background" style="border: 2px solid #000;">

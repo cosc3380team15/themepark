@@ -4,7 +4,7 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-	font-family: sans-serif;
+	font-family: comic sans, comic sans ms, cursive, verdana, arial, sans-serif;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 	background-color: #FFF;
@@ -12,6 +12,7 @@ body {
 
 header,
 footer {
+	font-family: comic sans, comic sans ms, cursive, verdana, arial, sans-serif;
 	display: block;
 }
 
@@ -38,6 +39,12 @@ a.employee-portal:active,
 a.employee-portal:hover {
   	outline: 0;
   	color: #FACE21;
+}
+
+a.white-hover:active,
+a.white-hover:hover {
+	outline: 0;
+	color: #FFF;
 }
 
 small {
@@ -81,6 +88,11 @@ img.medium-pic {
 img.large-pic {
 	width: 400px;
 	height: 300px;
+}
+
+img.very-large-pic {
+	width: 500px;
+	height: 375px;
 }
 
 .hidden {
@@ -335,7 +347,7 @@ nav {
 	text-align: left;
 	background-color: #FACE21;
 	width: 100%;
-	margin: 0px 0 10px 0;
+	margin: 0px 0 0px 0;
 	display: inline-block;
 	border: 2px solid #000;
 }
@@ -509,6 +521,7 @@ form.clean-look input[type="password"]:invalid {
 	background-repeat: no-repeat;
 }
 
+button,
 form .button {
     border: 1px solid #df0909;
     -webkit-border-radius: 3px;
@@ -530,6 +543,7 @@ form .button {
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f62b2b, endColorstr=#d20202);
 }
 
+button,
 form .button:hover {
 	border: 1px solid #b30808;
 	background-color: #e40a0a;

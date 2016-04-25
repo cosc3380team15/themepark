@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<div class="row small-margin-below">
+	<div class="col">
+		<span class="large-heading">Purchase History | <small>Results</small></span>
+	</div>
+</div>
+
 <c:if test="${not empty historyResults}">
 	<table>
 		<tr>

@@ -68,7 +68,8 @@ public class NewEmployeeServlet extends HttpServlet {
 			request.setAttribute("newEmployeePageMsg", "Failed to add employee. Employee may already exist. Please check your records.");
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/portal-pages/new-employee.jsp").forward(request, response);
+		doGet(request, response);
+		//request.getRequestDispatcher("/WEB-INF/portal-pages/new-employee.jsp").forward(request, response);
 	}
 
 }
