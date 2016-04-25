@@ -22,16 +22,16 @@
 	<div class="col">
 		<div class="panel-white">
 			<div class="panel-body">
-				<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/ManageDepartments?deptid=${deptId}&prevdeptmgrid=${deptMgrId}">
+				<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/ManageDepartments?deptid=${deptId}&prevdeptmgrid=${curDeptMgrId}">
 						<div class="row">
 							<div class="col">
 								<label for="departmentManager">Department manager</label>
 								<select name="departmentManager">
 									<c:forEach var="emp" items="${departmentEmployees}">
-										<c:if test="${emp.get('emp_id') == deptMgrId}">
+										<c:if test="${emp.get('emp_id') == deptMgrRec.get('emp_id')}">
 											<option value="${emp.get('emp_id')}" selected><c:out value="${emp.get('full_name')}"/></option>
 										</c:if>
-										<c:if test="${emp.get('emp_id') != deptMgrId}">
+										<c:if test="${emp.get('emp_id') != deptMgrRec.get('emp_id')}">
 											<option value="${emp.get('emp_id')}"><c:out value="${emp.get('full_name')}"/></option>
 										</c:if>
 									</c:forEach>

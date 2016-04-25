@@ -186,6 +186,39 @@ public class DBConnector {
 		return results;
 	}
 	
+	public List<Map<String, Object>> getAllDepartmentManagers() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getAllDepartmentManagers();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> getDepartmentManagerById(int id) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getDepartmentManagerByDeptId(?);");
+			ps.setInt(1, id);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
 	public List<Map<String, Object>> getAttendance() {
 		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
 

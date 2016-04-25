@@ -19,7 +19,13 @@
 				<c:out value="${record.get('num_emps')}"/>
 			</td>
 			<td>
-				<c:out value="${record.get('manager')}"/>
+				<c:set var="outputMgr" value="-"/>
+				<c:forEach var="mngr" items="${managers}">
+					<c:if test="${mngr.get('DeptName') eq record.get('dept_name')}">
+						<c:set var="outputMgr" value="${mngr.get('manager')}"/>
+					</c:if>
+				</c:forEach>
+				<c:out value="${outputMgr}"/>
 			</td>
 		</tr>
 	</c:forEach>

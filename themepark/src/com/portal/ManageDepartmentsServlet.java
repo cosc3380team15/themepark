@@ -40,11 +40,13 @@ public class ManageDepartmentsServlet extends HttpServlet {
 			
 			request.setAttribute("deptId", deptId);
 			request.setAttribute("departmentEmployees", conn.getDepartmentEmployeesById(deptId));
-			request.setAttribute("deptMgrId", row.get("emp_id"));
+			request.setAttribute("deptMgrRec", conn.getDepartmentManagerById(deptId).get(0));
+			request.setAttribute("curDeptMgrId", conn.getDepartmentManagerById(deptId).get(0).get("emp_id"));
 			
 			request.getRequestDispatcher("/WEB-INF/portal-pages/view-department.jsp").forward(request, response);
 		} else {
 			request.setAttribute("departmentsInfo", conn.getAllDepartmentsInfo());
+			request.setAttribute("managers", conn.getAllDepartmentManagers());
 			
 			request.getRequestDispatcher("/WEB-INF/portal-pages/manage-departments.jsp").forward(request, response);
 		}
@@ -72,7 +74,7 @@ public class ManageDepartmentsServlet extends HttpServlet {
 			request.setAttribute("viewDepartmentPageMsg", "No changes mades.");
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/portal-pages/view-department.jsp").forward(request, response);
+		doGet(request, response);
 	}
 
 }
