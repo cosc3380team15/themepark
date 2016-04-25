@@ -759,6 +759,22 @@ public class DBConnector {
 		return results;
 	}
 	
+	public List<Map<String, Object>> viewVendorList() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+		
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM vendList;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
 	public List<Map<String, Object>> viewAvgMonthlyAttendance(String year) {
 		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
 
@@ -810,6 +826,23 @@ public class DBConnector {
 		return results;
 	}
 	
+	public List<Map<String, Object>> viewVendTypes(String type) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM vendList WHERE type = ?;");
+			ps.setString(1, type);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
 	public List<Map<String, Object>> getDistinctYearsVendorRevenueDaily() {
 		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
 
@@ -817,6 +850,22 @@ public class DBConnector {
 			openConnection();
 			
 			PreparedStatement ps = con.prepareStatement("CALL getDistinctYearsVendorRevenueDaily();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> getVendTypes() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getVendType();");
 			
 			results = sendReadQuery(ps);
 		} catch (SQLException e) {

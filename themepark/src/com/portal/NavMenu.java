@@ -38,6 +38,9 @@ public class NavMenu {
 			case "OPERATIONS":
 				addOperationsSection();
 				break;
+			case "PUBLIC RELATIONS":
+				addPublicRelationsSection();
+				break;
 			default:
 				break;
 		}
@@ -68,6 +71,12 @@ public class NavMenu {
 		ns.links.add(new NavMenuLink("ATTENDANCE", "/Portal/Statistics/Attendance"));
 		ns.links.add(new NavMenuLink("MAINTENANCE", "/Portal/Statistics/Maintenance"));
 		ns.links.add(new NavMenuLink("VENDOR", "/Portal/Statistics/VendorStats"));
+		sections.add(ns);
+	}
+	
+	private void addPublicRelationsSection() {
+		NavSection ns = new NavSection("PUBLIC RELATIONS");
+		ns.links.add(new NavMenuLink("MANAGER VENDORS", "/Portal/Vendors/ManageVendors"));
 		sections.add(ns);
 	}
 	
