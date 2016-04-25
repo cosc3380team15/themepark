@@ -190,7 +190,12 @@ header .clearfix {
 }
 
 .wavy-red-background {
-	background: url('../images/wavy-red-background.jpg') no-repeat top left;
+	background: repeating-linear-gradient(
+  45deg,
+  #CC2828,
+  #CC2828 30px,
+  #404040 30px,
+  #404040 60px);
 }
 
 .red-background {
