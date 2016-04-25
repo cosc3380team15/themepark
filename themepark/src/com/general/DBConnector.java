@@ -116,6 +116,26 @@ public class DBConnector {
 		return new HashMap<String, Object>();
 	}
 	
+	public Map<String, Object> tryLoginUsingId(int empId, String password) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL tryLoginUsingId(?, ?);");
+			ps.setInt(1, empId);
+			ps.setString(2, password);
+			
+			results = sendReadQuery(ps);
+
+			return (results.size() > 0) ? results.get(0) : new HashMap<String, Object>();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return new HashMap<String, Object>();
+	}
+	
 	public List<String> getAllDepartmentNames() {
 		List<String> results = new ArrayList<String>();
 
@@ -840,5 +860,24 @@ public class DBConnector {
 		}
 		
 		return results;
+	}
+	
+	public int changeEmployeePassword(int empId, String oldPw, String newPw) {
+		int resultInt = 0;
+	    
+	    try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL changeEmployeePassword(?, ?, ?);");
+			ps.setInt(1, empId);
+			ps.setString(2, oldPw);
+			ps.setString(3, newPw);
+			
+			resultInt = sendUpdateQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return resultInt;
 	}
 }
