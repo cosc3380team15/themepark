@@ -5,11 +5,11 @@
 
 <div class="row">
 	<div class="col">
-		<span class="medium-heading">Rainouts | <small>Report</small></span>
+		<span class="medium-heading">Vendor | <small>Report</small></span>
 	</div>
 </div>
 
-<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/Statistics/Rainouts">
+<form class="clean-look" method="POST" action="${pageContext.request.contextPath}/Portal/Statistics/VendorStats">
 	<div class="row">
 		<div class="col">
 			<select name="selFilterYear">
@@ -30,7 +30,7 @@
 </form>
 
 <div class="row">
-	<div class="col" style="width: 800px;">
+	<div class="col" style="width: 900px;">
 		<table class="clean-look">
 			<tr>
 				<th></th>
@@ -38,35 +38,33 @@
 					<th><c:out value="${fn:substring(mn, 0, 3)}"/></th>
 				</c:forEach>
 			</tr>
-			<c:forEach var="weather" items="${weatherConditions}">
+			<c:forEach var="vendor" items="${vendors}">
 				<tr>
-					<td><c:out value="${weather}"/></td>
+					<td><c:out value="${vendor}"/></td>
 					<c:forEach var="i" begin="0" end="11">
 						<td>
 							<c:set var="cellVal" value="-"/>
-							<c:forEach var="record" items="${viewRideClosures}">
-								<c:if test="${record.get('Month') eq monthList[i] and record.get('Weather Condition') eq weather}">
-									<c:set var="cellVal" value="${record.get('Closures')}"/>
+							<c:forEach var="record" items="${viewVendorRevenueMonthly}">
+								<c:if test="${record.get('Month') eq monthList[i] and record.get('Name') eq vendor}">
+									<c:set var="cellVal" value="${record.get('Total Revenue')}"/>
 								</c:if>
 							</c:forEach>
-							<c:out value="${cellVal}"/>
+							$<c:out value="${cellVal}"/>
 						</td>
 					</c:forEach>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
-	<div class="col" style="width: 325px;">
+	<div class="col" style="width: 225px;">
 		<div class="panel-white">
 			<div class="panel-body">
 				<span class="small-heading">Year</span>
 				<span><c:out value="${filterYear}"/></span>
-				<span class="small-heading small-margin-above">Highest cause for closures</span>
-				<span><c:out value="${viewRideClosuresYearlyStats.get(0).get('Weather Condition')}"></c:out></span>
-				<span class="small-heading small-margin-above">Top 3 ride closures</span>
-				<c:forEach var="x" begin="0" end="2">
-					<span><c:out value="${not empty viewRideClosuresPerRide[x].get('Ride') ? viewRideClosuresPerRide[x].get('Ride') : '-'}"/></span>
-				</c:forEach>
+				<span class="small-heading small-margin-above">Highest revenue vendor</span>
+				<span><c:out value="${highestRevVendor}"></c:out></span>
+				<span class="small-heading small-margin-above">Lowest revenue vendor</span>
+				<span><c:out value="${lowestRevVendor}"></c:out></span>
 			</div>
 		</div>
 	</div>

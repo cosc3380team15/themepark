@@ -67,6 +67,7 @@ public class NavMenu {
 		ns.links.add(new NavMenuLink("RAINOUTS", "/Portal/Statistics/Rainouts"));
 		ns.links.add(new NavMenuLink("ATTENDANCE", "/Portal/Statistics/Attendance"));
 		ns.links.add(new NavMenuLink("MAINTENANCE", "/Portal/Statistics/Maintenance"));
+		ns.links.add(new NavMenuLink("VENDOR", "/Portal/Statistics/VendorStats"));
 		sections.add(ns);
 	}
 	

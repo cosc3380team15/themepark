@@ -9,19 +9,18 @@
 		<title>${param.title}</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 	</head>
+	<header class="red-background">
+		<jsp:include page="/WEB-INF/portal-pages/header.jsp"/>
+	</header>
 	<body class="wavy-red-background">
-		<header>
-			<jsp:include page="/WEB-INF/portal-pages/header.jsp"/>
-		</header>
-		
 		<div class="container container-body yellow-background">
 			<jsp:include page="/WEB-INF/portal-pages/${param.content}.jsp"/>
 		</div>
-		<hr>
-		<footer>
-			<div class="container">
-				<jsp:include page="/WEB-INF/portal-pages/footer.jsp"/>
-			</div>
-		</footer>
 	</body>
+	<footer class="red-background">
+		<hr>
+		<div class="container yellow-background" style="border: 2px solid #000;">
+			<jsp:include page="/WEB-INF/portal-pages/footer.jsp"/>
+		</div>
+	</footer>
 </html>

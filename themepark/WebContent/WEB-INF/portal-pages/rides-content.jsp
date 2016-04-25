@@ -30,7 +30,7 @@
 </form>
 
 <div class="row">
-	<div class="col" style="min-width: 800px;">
+	<div class="col" style="width: 800px;">
 		<table class="clean-look">
 			<tr>
 				<th></th>
@@ -56,7 +56,7 @@
 			</c:forEach>
 		</table>
 	</div>
-	<div class="col" style="min-width: 325px;">
+	<div class="col" style="width: 325px;">
 		<div class="panel-white">
 			<div class="panel-body">
 				<span class="small-heading">Year</span>

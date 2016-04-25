@@ -727,4 +727,118 @@ public class DBConnector {
 		return results;
 	}
 	
+	public List<Map<String, Object>> getWeeklyAttenSpikes() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getWeeklyAttenSpikes();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> getMonthlyAttenSpikes() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getMonthlyAttenSpikes();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewAvgMonthlyAttendance(String year) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewAvgMonthlyAttendance WHERE Year = ? ORDER BY Attendance desc;");
+			ps.setString(1, year);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewVendorRevenueYearly(String year) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewVendorRevenueYearly WHERE Year = ?;");
+			ps.setString(1, year);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> viewVendorRevenueMonthly(String year) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM viewVendorRevenueMonthly WHERE Year = ?;");
+			ps.setString(1, year);
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> getDistinctYearsVendorRevenueDaily() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("CALL getDistinctYearsVendorRevenueDaily();");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
+	
+	public List<Map<String, Object>> getVendorNames() {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+
+		try {
+			openConnection();
+			
+			PreparedStatement ps = con.prepareStatement("SELECT v.vendor_id as id, v.name as name from vendor v;");
+			
+			results = sendReadQuery(ps);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return results;
+	}
 }

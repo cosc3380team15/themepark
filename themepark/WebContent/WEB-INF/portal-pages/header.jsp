@@ -4,12 +4,9 @@
 	<div class="row">
 		<div class="left-float">
 			<img class="img-responsive" src="${pageContext.request.contextPath}/images/duff-gardens-logo-emp.png">
-			
-			
-			<!--   <div class="large-heading">logo here</div> -->
 		</div>
 		<div class="right-float">
-			<c:out value="${sessionScope.user}"/> | <a href="${pageContext.request.contextPath}/Logout">Logout</a>
+			<c:out value="${sessionScope.user}"/> | <a class="employee-portal" href="${pageContext.request.contextPath}/Logout">Logout</a>
 		</div>
 		<div class="clearfix"></div>
 	</div>

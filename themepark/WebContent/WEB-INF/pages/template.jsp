@@ -17,18 +17,18 @@
 			}
 		</style>
 	</head>
-	<body class="red-background">
-		<header>
-			<jsp:include page="/WEB-INF/pages/header.jsp"/>
-		</header>
-		
+	<header class="red-background">
+		<jsp:include page="/WEB-INF/pages/header.jsp"/>
+	</header>
+	<body class="wavy-red-background">
 		<div class="container container-body yellow-background">
 			<jsp:include page="/WEB-INF/pages/${param.content}.jsp"/>
 		</div>
 	</body>
-	<hr>
-	<footer>
-		<div class="container yellow-background">
+	
+	<footer class="red-background">
+		<hr>
+		<div class="container yellow-background" style="border: 2px solid #000;">
 			<jsp:include page="/WEB-INF/pages/footer.jsp"/>
 		</div>
 	</footer>
